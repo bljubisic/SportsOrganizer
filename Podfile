@@ -2,13 +2,17 @@
 use_frameworks!
 
 target 'SportsOrganizer' do
-    pod 'Starscream', '~> 2.0.3'
+    pod 'Starscream'
     pod 'SnapKit'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 end
 
 target 'SportsOrganizerTests' do
-    pod 'Starscream', '~> 2.0.3'
+    pod 'Starscream'
     pod 'SnapKit'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 end
 
 post_install do |installer|
