@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+protocol SOModelProtocol {
+    var textSubject: Variable<String> { get }
+    
+    func send(message: Message) -> Void
+    func create(message: Message) -> Bool
+}
