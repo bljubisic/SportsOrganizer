@@ -15,8 +15,16 @@
 		0B234F2C1E8C52A00017748B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B234F2A1E8C52A00017748B /* LaunchScreen.storyboard */; };
 		0B234F371E8C52A00017748B /* SportsOrganizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B234F361E8C52A00017748B /* SportsOrganizerTests.swift */; };
 		0B234F421E8C52A00017748B /* SportsOrganizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B234F411E8C52A00017748B /* SportsOrganizerUITests.swift */; };
+		0B24CE571E953AEF009D88F2 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */; };
+		0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B24CE581E95833E009D88F2 /* ViewModel.swift */; };
 		0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */; };
-		0BB9BEFA1E8DAEF600FBA9FA /* MessageStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF91E8DAEF600FBA9FA /* MessageStruct.swift */; };
+		0BB9BEFA1E8DAEF600FBA9FA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF91E8DAEF600FBA9FA /* Message.swift */; };
+		0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */; };
+		0BB9BEFE1E8E930600FBA9FA /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */; };
+		0BB9BF001E8E930A00FBA9FA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */; };
+		0BBF609E1E96B2B5006D1920 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF609D1E96B2B5006D1920 /* RxSwift.framework */; };
+		0BBF60A01E96B2BF006D1920 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF609F1E96B2BF006D1920 /* RxCocoa.framework */; };
+		0BBF60A41E96B3BE006D1920 /* RxWebSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF60A31E96B3BE006D1920 /* RxWebSocket.framework */; };
 		7E30DB483EFD8F42F09259D4 /* Pods_SportsOrganizerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79168C69C4E1DD27D7F3641 /* Pods_SportsOrganizerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +59,17 @@
 		0B234F3D1E8C52A00017748B /* SportsOrganizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsOrganizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B234F411E8C52A00017748B /* SportsOrganizerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsOrganizerUITests.swift; sourceTree = "<group>"; };
 		0B234F431E8C52A00017748B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelProtocol.swift; path = ViewModel/ViewModelProtocol.swift; sourceTree = "<group>"; };
+		0B24CE581E95833E009D88F2 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ViewModel/ViewModel.swift; sourceTree = "<group>"; };
 		0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOModelProtocol.swift; path = Model/SOModelProtocol.swift; sourceTree = "<group>"; };
-		0BB9BEF91E8DAEF600FBA9FA /* MessageStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageStruct.swift; path = Model/MessageStruct.swift; sourceTree = "<group>"; };
+		0BB9BEF91E8DAEF600FBA9FA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
+		0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportsOrganizerModel.swift; path = Model/SportsOrganizerModel.swift; sourceTree = "<group>"; };
+		0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
+		0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/Starscream/Starscream.framework"; sourceTree = "<group>"; };
+		0BBF609D1E96B2B5006D1920 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		0BBF609F1E96B2BF006D1920 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "Pods/../build/Debug-iphoneos/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
+		0BBF60A11E96B2C4006D1920 /* RxStarscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxStarscream.framework; path = "Pods/../build/Debug-iphoneos/RxStarscream/RxStarscream.framework"; sourceTree = "<group>"; };
+		0BBF60A31E96B3BE006D1920 /* RxWebSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxWebSocket.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/RxWebSocket/RxWebSocket.framework"; sourceTree = "<group>"; };
 		1C970CB33BD2AF29EA86937C /* Pods-SportsOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsOrganizer/Pods-SportsOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 		864AEB1271B58478E52CE63F /* Pods_SportsOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE06FB908011AC1B9FE016B /* Pods-SportsOrganizerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsOrganizerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SportsOrganizerTests/Pods-SportsOrganizerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BBF60A41E96B3BE006D1920 /* RxWebSocket.framework in Frameworks */,
+				0BBF60A01E96B2BF006D1920 /* RxCocoa.framework in Frameworks */,
+				0BBF609E1E96B2B5006D1920 /* RxSwift.framework in Frameworks */,
+				0BB9BF001E8E930A00FBA9FA /* Starscream.framework in Frameworks */,
+				0BB9BEFE1E8E930600FBA9FA /* SnapKit.framework in Frameworks */,
 				0AE0AE10201867BF4845BD65 /* Pods_SportsOrganizer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +176,8 @@
 		0B234F501E8C54650017748B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */,
+				0B24CE581E95833E009D88F2 /* ViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -161,8 +185,9 @@
 		0B234F511E8C546D0017748B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0BB9BEF91E8DAEF600FBA9FA /* MessageStruct.swift */,
+				0BB9BEF91E8DAEF600FBA9FA /* Message.swift */,
 				0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */,
+				0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -170,6 +195,12 @@
 		D5AC0A92476B57F795432473 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BBF60A31E96B3BE006D1920 /* RxWebSocket.framework */,
+				0BBF60A11E96B2C4006D1920 /* RxStarscream.framework */,
+				0BBF609F1E96B2BF006D1920 /* RxCocoa.framework */,
+				0BBF609D1E96B2B5006D1920 /* RxSwift.framework */,
+				0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */,
+				0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */,
 				864AEB1271B58478E52CE63F /* Pods_SportsOrganizer.framework */,
 				B79168C69C4E1DD27D7F3641 /* Pods_SportsOrganizerTests.framework */,
 			);
@@ -423,7 +454,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BB9BEFA1E8DAEF600FBA9FA /* MessageStruct.swift in Sources */,
+				0BB9BEFA1E8DAEF600FBA9FA /* Message.swift in Sources */,
+				0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */,
+				0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */,
+				0B24CE571E953AEF009D88F2 /* ViewModelProtocol.swift in Sources */,
 				0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */,
 				0B234F241E8C52A00017748B /* ViewController.swift in Sources */,
 				0B234F221E8C52A00017748B /* AppDelegate.swift in Sources */,
@@ -580,6 +614,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ENT89NLKC9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxStarscream",
+				);
 				INFOPLIST_FILE = SportsOrganizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.persukibo.SportsOrganizer;
@@ -594,6 +633,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ENT89NLKC9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/RxStarscream",
+				);
 				INFOPLIST_FILE = SportsOrganizer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.persukibo.SportsOrganizer;
