@@ -1,5 +1,5 @@
 //
-//  MessageStruct.swift
+//  Message.swift
 //  SportsOrganizer
 //
 //  Created by Bratislav Ljubisic on 3/30/17.
