@@ -7,15 +7,24 @@
 //
 
 import Foundation
+import RxSwift
 
-public class ViewModel: ViewModelProtocol {
+public class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModelOutputs {
     
-    var message: Message
     var model: SOModelProtocol
+    var textVariable: Variable<String>
+
+    var outputs: InitViewModelOutputs {
+        return self
+    }
+    
+    var inputs: InitViewModelInputs {
+        return self
+    }
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.message = Message(message: "", timeStamp: Date())
+        self.textVariable = model.textSubject
     }
     
     func send(message: Message) {
