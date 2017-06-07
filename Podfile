@@ -1,4 +1,5 @@
 # Podfile
+platform :ios, '10.3'
 use_frameworks!
 
 target 'SportsOrganizer' do
@@ -6,6 +7,7 @@ target 'SportsOrganizer' do
     pod 'SnapKit'
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'ProtocolBuffers-Swift'
 end
 
 target 'SportsOrganizerTests' do
@@ -13,6 +15,7 @@ target 'SportsOrganizerTests' do
     pod 'SnapKit'
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'ProtocolBuffers-Swift'
 end
 
 post_install do |installer|
