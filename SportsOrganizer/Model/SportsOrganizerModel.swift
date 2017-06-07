@@ -12,16 +12,18 @@ import RxSwift
 
 public class SportsOrganizerModel: SOModelProtocol {
     
-    var socket: WebSocket
-    var textSubject: Variable<String>
+    var communicationPortal: CommunicationProtocol
+    var textSubject: Variable<CommMessage>
     
     init() {
-        socket = WebSocket(url: URL(string: "ws://echo.websocket.org")!)
-        textSubject = Variable("Start")
+        
+        communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!)
+        textSubject = Variable(CommMessage(message: Data(), state: .idle))
+        self.communicationPortal.connect()
     }
     
     func send(message: Message) {
-        socket.write(string: message.message)
+        _ = self.communicationPortal.send(Message: message)
     }
     
     func create(message: Message) -> Bool {
@@ -30,21 +32,3 @@ public class SportsOrganizerModel: SOModelProtocol {
     
 }
 
-extension SportsOrganizerModel: WebSocketDelegate {
-    
-    public func websocketDidConnect(socket: Starscream.WebSocket) {
-        
-    }
-    
-    public func websocketDidDisconnect(socket: Starscream.WebSocket, error: NSError?) {
-        
-    }
-    
-    public func websocketDidReceiveMessage(socket: Starscream.WebSocket, text: String) {
-        textSubject.value = text
-    }
-    
-    public func websocketDidReceiveData(socket: Starscream.WebSocket, data: Data) {
-        
-    }
-}
