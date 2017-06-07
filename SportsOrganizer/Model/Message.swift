@@ -31,3 +31,34 @@ extension Message {
         set: { (m, wm) in Message(message: m, timeStamp: wm.timeStamp) }
     )
 }
+
+enum State {
+    case initialState
+    case sendingMessage
+    case waitingResponse
+    case idle
+}
+
+public struct CommMessage {
+    let message: Data
+    let state: State
+}
+
+extension CommMessage {
+    init() {
+        message = Data()
+        state = .idle
+    }
+}
+
+extension CommMessage {
+    static let commMessageLens = Lens<CommMessage, Data> (
+        get: { $0.message },
+        set: { (m, cm) in CommMessage(message: m, state: cm.state) }
+    )
+    
+    static let commStateLens = Lens<CommMessage, State> (
+        get: { $0.state },
+        set: { (s, cm) in CommMessage(message: cm.message, state: s) }
+    )
+}
