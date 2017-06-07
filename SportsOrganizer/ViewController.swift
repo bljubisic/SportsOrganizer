@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
@@ -71,6 +73,20 @@ class ViewController: UIViewController {
             make.height.equalTo(128)
             make.width.equalTo(343)
         }
+        //let disposeBag = DisposeBag()
+        
+        _ = self.viewModel.outputs.textVariable.asObservable().map { (result: String) -> String in
+            return result
+            }.subscribe(onNext: { (result: String) in
+                print("Result: \(result)")
+        }, onError: { (Error) in
+            print("error")
+        }, onCompleted: {
+            print("completed")
+        }) { 
+            print("Something")
+        }
+        //self.viewModel.outputs.textVariable.asObservable().bindTo(self.responseTextView.rx.text).addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,7 +95,8 @@ class ViewController: UIViewController {
     }
     
     func sendMessage() {
-        
+        let message = Message(message: self.messageTextField!.text!, timeStamp: Date())
+        self.viewModel.inputs.send(message: message)
     }
 
 
