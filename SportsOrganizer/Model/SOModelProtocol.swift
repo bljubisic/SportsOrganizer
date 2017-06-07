@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol SOModelProtocol {
-    var textSubject: Variable<String> { get }
+    var textSubject: Variable<CommMessage> { get }
     
     func send(message: Message) -> Void
     func create(message: Message) -> Bool
