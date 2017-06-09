@@ -18,8 +18,10 @@ enum CommunicationStatus {
 
 protocol CommunicationProtocol {
     
-    func connect()
+    func connect() -> Void
     func send(Message message: Message) -> Bool
     func status() -> CommunicationStatus
+    func shouldReconnect(flag: Bool) -> Void
     
+    var messagesData: Variable<Data> { get }
 }
