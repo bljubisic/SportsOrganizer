@@ -14,7 +14,7 @@ protocol ViewModelProtocol {
 }
 
 protocol InitViewModelOutputs {
-    var textVariable: Variable<String> { set get }
+    var textVariable: Variable<CommMessage> { set get }
 }
 
 protocol InitViewModelInputs {
