@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             make.width.equalTo(343)
         }
         //let disposeBag = DisposeBag()
-        
+        /*
         _ = self.viewModel.outputs.textVariable.asObservable().map { (result: String) -> String in
             return result
             }.subscribe(onNext: { (result: String) in
@@ -86,6 +86,7 @@ class ViewController: UIViewController {
         }) { 
             print("Something")
         }
+        */
         //self.viewModel.outputs.textVariable.asObservable().bindTo(self.responseTextView.rx.text).addDisposableTo(disposeBag)
     }
 
