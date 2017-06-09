@@ -30,8 +30,26 @@ class InitialViewController: UIViewController {
             make.center.equalTo(self.view)
         }
         self.startButton.isEnabled = false
+        self.startButton.addTarget(self, action: #selector(startEvent), for: .touchUpInside)
         
-        // Do any additional setup after loading the view.
+        _ = self.viewModel.outputs.textVariable.asObservable().map { (result: CommMessage) -> Data in
+            if(result.state == .initialState) {
+                self.startButton.isEnabled = true
+            }
+            return result.message
+            }.subscribe(onNext: { result in
+                print("Result: \(result)")
+            }, onError: { (Error) in
+                print("error")
+            }, onCompleted: {
+                print("completed")
+            }) {
+                print("Something")
+        }
+    }
+    
+    func startEvent() {
+        print("START")
     }
 
 }
