@@ -12,7 +12,7 @@ import RxSwift
 public class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModelOutputs {
     
     var model: SOModelProtocol
-    var textVariable: Variable<String>
+    var textVariable: Variable<CommMessage>
 
     var outputs: InitViewModelOutputs {
         return self
