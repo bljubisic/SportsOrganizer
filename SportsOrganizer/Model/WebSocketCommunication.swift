@@ -38,7 +38,7 @@ public class WebSocketCommunication: CommunicationProtocol  {
         return .connected
     }
     
-    func shouldReconect(flag: Bool) -> Void {
+    func shouldReconnect(flag: Bool) -> Void {
         self.shouldReconnectFlag = flag
     }
 }
