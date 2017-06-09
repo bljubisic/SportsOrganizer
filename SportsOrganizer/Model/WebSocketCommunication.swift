@@ -13,9 +13,14 @@ import RxSwift
 public class WebSocketCommunication: CommunicationProtocol  {
     
     var socket: WebSocket
+    var shouldReconnectFlag: Bool
+    var messagesData: Variable<Data>
+    
     
     init(withURL url: URL) {
         socket =  WebSocket(url: url)
+        shouldReconnectFlag = false
+        messagesData = Variable("Init".data(using: String.defaultCStringEncoding)!)
     }
     
     func connect() {
@@ -31,6 +36,10 @@ public class WebSocketCommunication: CommunicationProtocol  {
     
     func status() -> CommunicationStatus {
         return .connected
+    }
+    
+    func shouldReconect(flag: Bool) -> Void {
+        self.shouldReconectFlag = flag
     }
 }
 
@@ -51,6 +60,7 @@ extension WebSocketCommunication: WebSocketDelegate {
     
     public func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print("Received data: \(data)")
+        self.messagesData.value = data
         
     }
     
