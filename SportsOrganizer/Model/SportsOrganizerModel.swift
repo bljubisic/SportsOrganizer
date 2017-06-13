@@ -13,23 +13,26 @@ import RxSwift
 public class SportsOrganizerModel: SOModelProtocol {
     
     var communicationPortal: CommunicationProtocol
-    var textSubject: Variable<CommMessage>
+    var textSubject: Observable<CommMessage>!
+    var modelState: Variable<State>
     var state: State
+    private let disposeBag = DisposeBag()
     
     init() {
         
         communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!)
         self.communicationPortal.shouldReconnect(flag: true)
-        textSubject = Variable(CommMessage(message: Data(), state: .idle))
         self.communicationPortal.connect()
         self.state = .idle
-        
-        
-        _ = self.communicationPortal.messagesData.asObservable().map{ (data) -> CommMessage in
-            return CommMessage(message: data, state: .initialState)
-            }.subscribe(onNext: { (message) in
-                self.textSubject.value = message
-            })
+        self.modelState = Variable(.initialState)
+        let messagesDataFiltered = self.communicationPortal.messagesData.asObservable().filter { (message) -> Bool in
+            print("Message!!!")
+            return (message != Data())
+        }
+        textSubject = Observable.combineLatest(modelState.asObservable(), messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
+            print("Message received: \(message)")
+            return CommMessage(message: message, state: state)
+        })
     }
     
     func send(message: Message) {
