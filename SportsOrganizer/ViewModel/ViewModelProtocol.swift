@@ -14,7 +14,7 @@ protocol ViewModelProtocol {
 }
 
 protocol InitViewModelOutputs {
-    var textVariable: Variable<CommMessage> { set get }
+    var textVariable: Observable<CommMessage> { set get }
 }
 
 protocol InitViewModelInputs {
