@@ -16,6 +16,7 @@ class InitialViewController: UIViewController {
     var startButton: UIButton!
     
     var viewModel: InitViewModelProtocol!
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class InitialViewController: UIViewController {
         self.startButton.isEnabled = false
         self.startButton.addTarget(self, action: #selector(startEvent), for: .touchUpInside)
         
-        _ = self.viewModel.outputs.textVariable.asObservable().map { (result: CommMessage) -> Data in
+        self.viewModel.outputs.textVariable.map { (result: CommMessage) -> Data in
             if(result.state == .initialState) {
                 self.startButton.isEnabled = true
             }
@@ -45,7 +46,7 @@ class InitialViewController: UIViewController {
                 print("completed")
             }) {
                 print("Something")
-        }
+        }.addDisposableTo(disposeBag)
     }
     
     func startEvent() {
