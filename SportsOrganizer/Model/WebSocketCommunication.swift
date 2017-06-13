@@ -20,7 +20,7 @@ public class WebSocketCommunication: CommunicationProtocol  {
     init(withURL url: URL) {
         socket =  WebSocket(url: url)
         shouldReconnectFlag = false
-        messagesData = Variable("Init".data(using: String.defaultCStringEncoding)!)
+        messagesData = Variable(Data())
     }
     
     func connect() {
