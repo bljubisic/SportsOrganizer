@@ -21,7 +21,8 @@ protocol CommunicationProtocol {
     func connect() -> Void
     func send(Message message: Message) -> Bool
     func status() -> CommunicationStatus
-    func shouldReconnect(flag: Bool) -> Void
+    func set(Model model: SOModelProtocol) -> Void
     
     var messagesData: Variable<Data> { get }
+    var model: SOModelProtocol! { get }
 }
