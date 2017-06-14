@@ -37,6 +37,16 @@ enum State {
     case sendingMessage
     case waitingResponse
     case idle
+    
+    mutating func changeState(from: State, to: State) {
+        // TODO: For now let this be like this, but should be changed with rules when and how state could be changed
+        switch self {
+        case .idle: self = .initialState
+        case .initialState: self = .sendingMessage
+        case .sendingMessage: self = .waitingResponse
+        case .waitingResponse: self = .idle
+        }
+    }
 }
 
 public struct CommMessage {
