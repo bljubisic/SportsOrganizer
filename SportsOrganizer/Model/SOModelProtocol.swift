@@ -12,7 +12,9 @@ import RxCocoa
 
 protocol SOModelProtocol {
     var textSubject: Observable<CommMessage>! { get }
+    var modelState: Variable<State> { get }
     
     func send(message: Message) -> Void
     func create(message: Message) -> Bool
+    func changeState(from state:State, to: State) -> Void
 }
