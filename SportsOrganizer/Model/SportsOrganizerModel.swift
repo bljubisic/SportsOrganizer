@@ -19,20 +19,20 @@ public class SportsOrganizerModel: SOModelProtocol {
     private let disposeBag = DisposeBag()
     
     init() {
-        
-        communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!)
-        self.communicationPortal.shouldReconnect(flag: true)
+
+        communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!, shouldReconnect: true)
         self.communicationPortal.connect()
         self.state = .idle
-        self.modelState = Variable(.initialState)
+        self.modelState = Variable(.idle)
         let messagesDataFiltered = self.communicationPortal.messagesData.asObservable().filter { (message) -> Bool in
             print("Message!!!")
             return (message != Data())
         }
         textSubject = Observable.combineLatest(modelState.asObservable(), messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
-            print("Message received: \(message)")
+            print("Message received: \(message) and state is \(state)")
             return CommMessage(message: message, state: state)
         })
+        communicationPortal.set(Model: self)
     }
     
     func send(message: Message) {
@@ -41,6 +41,10 @@ public class SportsOrganizerModel: SOModelProtocol {
     
     func create(message: Message) -> Bool {
         return true
+    }
+    
+    func changeState(from state: State, to: State) {
+        
     }
     
 }
