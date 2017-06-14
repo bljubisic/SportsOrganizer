@@ -15,12 +15,18 @@ public class WebSocketCommunication: CommunicationProtocol  {
     var socket: WebSocket
     var shouldReconnectFlag: Bool
     var messagesData: Variable<Data>
+    var model: SOModelProtocol!
     
     
-    init(withURL url: URL) {
-        socket =  WebSocket(url: url)
-        shouldReconnectFlag = false
-        messagesData = Variable(Data())
+    init(withURL url: URL, shouldReconnect: Bool) {
+        self.socket =  WebSocket(url: url)
+        self.shouldReconnectFlag = shouldReconnect
+        self.messagesData = Variable(Data())
+        self.model = nil
+    }
+    
+    func set(Model model: SOModelProtocol) {
+        self.model = model
     }
     
     func connect() {
@@ -30,17 +36,22 @@ public class WebSocketCommunication: CommunicationProtocol  {
     }
     
     func send(Message message: Message) -> Bool {
+        if(!socket.isConnected && self.shouldReconnectFlag) {
+            self.socket.connect()
+        }
         socket.write(string: message.message)
         return true
     }
     
     func status() -> CommunicationStatus {
-        return .connected
+        if(socket.isConnected) {
+            return .connected
+        }
+        else {
+            return .disconnected
+        }
     }
-    
-    func shouldReconnect(flag: Bool) -> Void {
-        self.shouldReconnectFlag = flag
-    }
+
 }
 
 extension WebSocketCommunication: WebSocketDelegate {
@@ -60,8 +71,10 @@ extension WebSocketCommunication: WebSocketDelegate {
     
     public func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print("Received data: \(data)")
+        var state = self.model.modelState.value
+        state.changeState(from: state, to: .initialState)
+        self.model.modelState.value = state
         self.messagesData.value = data
-        
     }
     
 }
