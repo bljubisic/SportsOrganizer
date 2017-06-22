@@ -43,6 +43,21 @@ public class WebSocketCommunication: CommunicationProtocol  {
         return true
     }
     
+    func sendRegistration(Message message: RegMessage) -> Bool {
+        if(!socket.isConnected && self.shouldReconnectFlag) {
+            self.socket.connect()
+        }
+        let registrationRequestBuilder = Com.Sportorganizer.Proto.Msgs.RegistrationRequest.Builder()
+        registrationRequestBuilder.setFirstName(message.name)
+        registrationRequestBuilder.setLastName(message.name)
+        registrationRequestBuilder.setUsername(message.name)
+        registrationRequestBuilder.setPhoneNumber(message.phone)
+        registrationRequestBuilder.setAlreadyRegistred(false)
+        let registrationRequest = registrationRequestBuilder.getMessage()
+        socket.write(data: registrationRequest.data())
+        return true
+    }
+    
     func status() -> CommunicationStatus {
         if(socket.isConnected) {
             return .connected
