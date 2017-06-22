@@ -32,6 +32,24 @@ extension Message {
     )
 }
 
+struct RegMessage {
+    let name: String
+    let sport: String
+    let birthday: Date
+    let country: String
+    let phone: String
+}
+
+extension RegMessage {
+    init() {
+        name = ""
+        sport = ""
+        birthday = Date()
+        country = ""
+        phone = ""
+    }
+}
+
 enum State {
     case initialState
     case sendingMessage
