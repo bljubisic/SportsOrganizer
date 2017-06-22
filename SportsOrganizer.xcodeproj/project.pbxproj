@@ -18,7 +18,11 @@
 		0B24CE571E953AEF009D88F2 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */; };
 		0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B24CE581E95833E009D88F2 /* ViewModel.swift */; };
 		0B45CE5A1EE35D0200EE6149 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B45CE591EE35D0200EE6149 /* InitialViewController.swift */; };
+		0B51F3FC1EFBCE06009BEFFE /* RegViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B51F3FB1EFBCE06009BEFFE /* RegViewModel.swift */; };
 		0B7F5FA61ECDA7940025CB5A /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F5FA51ECDA7940025CB5A /* ProtocolBuffers.framework */; };
+		0BA47A881EFB012200E7FDCB /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA47A871EFB012200E7FDCB /* RegistrationViewController.swift */; };
+		0BA47A8A1EFB01C800E7FDCB /* RegViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA47A891EFB01C800E7FDCB /* RegViewModelProtocol.swift */; };
+		0BB1C4611EF2DBB40085659D /* PARTagPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB1C4601EF2DBB40085659D /* PARTagPicker.framework */; };
 		0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */; };
 		0BB9BEFA1E8DAEF600FBA9FA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF91E8DAEF600FBA9FA /* Message.swift */; };
 		0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */; };
@@ -65,7 +69,11 @@
 		0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModelProtocol.swift; path = ViewModel/ViewModelProtocol.swift; sourceTree = "<group>"; };
 		0B24CE581E95833E009D88F2 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = ViewModel/ViewModel.swift; sourceTree = "<group>"; };
 		0B45CE591EE35D0200EE6149 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialViewController.swift; path = View/InitialViewController.swift; sourceTree = "<group>"; };
+		0B51F3FB1EFBCE06009BEFFE /* RegViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegViewModel.swift; path = ViewModel/RegViewModel.swift; sourceTree = "<group>"; };
 		0B7F5FA51ECDA7940025CB5A /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/ProtocolBuffers-Swift/ProtocolBuffers.framework"; sourceTree = "<group>"; };
+		0BA47A871EFB012200E7FDCB /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = View/Registration/RegistrationViewController.swift; sourceTree = "<group>"; };
+		0BA47A891EFB01C800E7FDCB /* RegViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegViewModelProtocol.swift; path = ViewModel/RegViewModelProtocol.swift; sourceTree = "<group>"; };
+		0BB1C4601EF2DBB40085659D /* PARTagPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PARTagPicker.framework; path = "Pods/../build/Debug-iphoneos/PARTagPicker/PARTagPicker.framework"; sourceTree = "<group>"; };
 		0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOModelProtocol.swift; path = Model/SOModelProtocol.swift; sourceTree = "<group>"; };
 		0BB9BEF91E8DAEF600FBA9FA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
 		0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportsOrganizerModel.swift; path = Model/SportsOrganizerModel.swift; sourceTree = "<group>"; };
@@ -88,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BB1C4611EF2DBB40085659D /* PARTagPicker.framework in Frameworks */,
 				0B7F5FA61ECDA7940025CB5A /* ProtocolBuffers.framework in Frameworks */,
 				0BBF609E1E96B2B5006D1920 /* RxSwift.framework in Frameworks */,
 				0BB9BF001E8E930A00FBA9FA /* Starscream.framework in Frameworks */,
@@ -170,6 +179,7 @@
 		0B234F4F1E8C545E0017748B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0BA47A841EFAFF7A00E7FDCB /* Registration */,
 				0B234F231E8C52A00017748B /* ViewController.swift */,
 				0B234F251E8C52A00017748B /* Main.storyboard */,
 				0B234F2A1E8C52A00017748B /* LaunchScreen.storyboard */,
@@ -183,6 +193,8 @@
 			children = (
 				0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */,
 				0B24CE581E95833E009D88F2 /* ViewModel.swift */,
+				0BA47A891EFB01C800E7FDCB /* RegViewModelProtocol.swift */,
+				0B51F3FB1EFBCE06009BEFFE /* RegViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -200,9 +212,18 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		0BA47A841EFAFF7A00E7FDCB /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				0BA47A871EFB012200E7FDCB /* RegistrationViewController.swift */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
 		D5AC0A92476B57F795432473 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0BB1C4601EF2DBB40085659D /* PARTagPicker.framework */,
 				0B7F5FA51ECDA7940025CB5A /* ProtocolBuffers.framework */,
 				0BBF609D1E96B2B5006D1920 /* RxSwift.framework */,
 				0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */,
@@ -465,10 +486,13 @@
 				0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */,
 				0BEBA2C51EE7F3C400561313 /* CommunicationProtocol.swift in Sources */,
 				0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */,
+				0B51F3FC1EFBCE06009BEFFE /* RegViewModel.swift in Sources */,
 				0B45CE5A1EE35D0200EE6149 /* InitialViewController.swift in Sources */,
+				0BA47A881EFB012200E7FDCB /* RegistrationViewController.swift in Sources */,
 				0B24CE571E953AEF009D88F2 /* ViewModelProtocol.swift in Sources */,
 				0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */,
 				0BD4C84C1ECDA27C00714B48 /* Com.Sportorganizer.Proto.Msgs.Messages.proto.swift in Sources */,
+				0BA47A8A1EFB01C800E7FDCB /* RegViewModelProtocol.swift in Sources */,
 				0B234F241E8C52A00017748B /* ViewController.swift in Sources */,
 				0B234F221E8C52A00017748B /* AppDelegate.swift in Sources */,
 			);
@@ -628,6 +652,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxStarscream",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PARTagPicker",
 				);
 				INFOPLIST_FILE = SportsOrganizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -648,6 +673,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxStarscream",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PARTagPicker",
 				);
 				INFOPLIST_FILE = SportsOrganizer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
