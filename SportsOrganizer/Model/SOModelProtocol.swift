@@ -15,6 +15,7 @@ protocol SOModelProtocol {
     var modelState: Variable<State> { get }
     
     func send(message: Message) -> Void
+    func sendRegistration(message: RegMessage) -> Void
     func create(message: Message) -> Bool
     func changeState(from state:State, to: State) -> Void
 }
