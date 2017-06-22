@@ -20,6 +20,7 @@ protocol CommunicationProtocol {
     
     func connect() -> Void
     func send(Message message: Message) -> Bool
+    func sendRegistration(Message message: RegMessage) -> Bool
     func status() -> CommunicationStatus
     func set(Model model: SOModelProtocol) -> Void
     
