@@ -8,6 +8,7 @@ target 'SportsOrganizer' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'ProtocolBuffers-Swift'
+    pod 'PARTagPicker'
 end
 
 target 'SportsOrganizerTests' do
@@ -16,6 +17,7 @@ target 'SportsOrganizerTests' do
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'ProtocolBuffers-Swift'
+    pod 'PARTagPicker'
 end
 
 post_install do |installer|
