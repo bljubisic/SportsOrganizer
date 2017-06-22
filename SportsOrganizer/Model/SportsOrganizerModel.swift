@@ -39,6 +39,10 @@ public class SportsOrganizerModel: SOModelProtocol {
         _ = self.communicationPortal.send(Message: message)
     }
     
+    func sendRegistration(message: RegMessage) {
+        _ = self.communicationPortal.sendRegistration(Message: message)
+    }
+    
     func create(message: Message) -> Bool {
         return true
     }
