@@ -50,6 +50,18 @@ extension RegMessage {
     }
 }
 
+struct AddressBook {
+    let name: String
+    let phoneNum: [String]
+}
+
+extension AddressBook {
+    init() {
+        name = ""
+        phoneNum = [String]()
+    }
+}
+
 enum State {
     case initialState
     case sendingMessage
