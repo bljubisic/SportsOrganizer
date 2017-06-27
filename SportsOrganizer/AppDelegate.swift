@@ -7,14 +7,37 @@
 //
 
 import UIKit
+import Contacts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var store = CNContactStore()
 
-
+    func checkAccessStatus(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let authorizationStatus = CNContactStore.authorizationStatus(for: CNEntityType.contacts)
+        
+        switch authorizationStatus {
+        case .authorized:
+            completionHandler(true)
+        case .denied, .notDetermined:
+            self.store.requestAccess(for: CNEntityType.contacts, completionHandler: { (access, accessError) -> Void in
+                if access {
+                    completionHandler(access)
+                } else {
+                    print("access denied")
+                }
+            })
+        default:
+            completionHandler(false)
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        self.checkAccessStatus { (accessGranted) in
+            print(accessGranted)
+        }
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = InitialViewController()
         let model = SportsOrganizerModel()
