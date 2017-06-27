@@ -18,4 +18,5 @@ protocol SOModelProtocol {
     func sendRegistration(message: RegMessage) -> Void
     func create(message: Message) -> Bool
     func changeState(from state:State, to: State) -> Void
+    func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) -> Void
 }
