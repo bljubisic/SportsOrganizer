@@ -9,9 +9,32 @@
 import Foundation
 import Starscream
 import RxSwift
+import Contacts
 
 public class SportsOrganizerModel: SOModelProtocol {
     
+    func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
+        let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactPhoneNumbersKey]
+        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: "*")
+        do {
+            let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
+            var result: [AddressBook] = [AddressBook]()
+            
+            for contact in contacts {
+                var phoneNumbers = [String]()
+                for phoneNumber in contact.phoneNumbers {
+                    phoneNumbers.append(phoneNumber.value.stringValue)
+                }
+                let tmpAddressBook = AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
+                result.append(tmpAddressBook)
+            }
+            _ = completion(result)
+        } catch _ {
+            print("Error")
+        }
+    }
+    
+    var store = CNContactStore()
     var communicationPortal: CommunicationProtocol
     var textSubject: Observable<CommMessage>!
     var modelState: Variable<State>
