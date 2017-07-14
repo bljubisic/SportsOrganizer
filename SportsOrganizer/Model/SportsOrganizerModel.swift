@@ -15,9 +15,9 @@ public class SportsOrganizerModel: SOModelProtocol {
     
     func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
         let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactPhoneNumbersKey]
-        let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: "*")
+        //let predicate: NSPredicate = CNContact.predicateForContacts(matchingName: "%")
         do {
-            let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
+            let contacts = try self.store.unifiedContacts(matching: nil, keysToFetch: keysToFetch as [CNKeyDescriptor])
             var result: [AddressBook] = [AddressBook]()
             
             for contact in contacts {
