@@ -47,14 +47,17 @@ public class WebSocketCommunication: CommunicationProtocol  {
         if(!socket.isConnected && self.shouldReconnectFlag) {
             self.socket.connect()
         }
-        let registrationRequestBuilder = Com.Sportorganizer.Proto.Msgs.RegistrationRequest.Builder()
-        registrationRequestBuilder.setFirstName(message.name)
-        registrationRequestBuilder.setLastName(message.name)
-        registrationRequestBuilder.setUsername(message.name)
-        registrationRequestBuilder.setPhoneNumber(message.phone)
-        registrationRequestBuilder.setAlreadyRegistred(false)
-        let registrationRequest = registrationRequestBuilder.getMessage()
-        socket.write(data: registrationRequest.data())
+        var registrationRequestBuilder = Com_Sportorganizer_Proto_Msgs_RegistrationRequest()
+        registrationRequestBuilder.firstName = message.name
+        registrationRequestBuilder.lastName = message.name
+        registrationRequestBuilder.username = message.name
+        registrationRequestBuilder.phoneNumber = message.phone
+        registrationRequestBuilder.alreadyRegistred = false
+        do {
+            try socket.write(data: registrationRequestBuilder.serializedData())
+        } catch(_) {
+            
+        }
         return true
     }
     
