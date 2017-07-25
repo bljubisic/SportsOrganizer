@@ -35,12 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let model = SportsOrganizerModel()
         self.checkAccessStatus { (accessGranted) in
-            print(accessGranted)
+            if(accessGranted) {
+                model.collectAddressBookInfoWith(completion: { (adresses) -> Bool in
+                    // need to get those addresses and send them via protobuf to server
+                    return true
+                })
+            }
+            else {
+                print("Cannot send contacts without permission")
+            }
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = InitialViewController()
-        let model = SportsOrganizerModel()
+        
         viewController.viewModel = ViewModel(withModel: model)
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
