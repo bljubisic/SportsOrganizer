@@ -27,6 +27,7 @@
 		0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */; };
 		0BB9BEFE1E8E930600FBA9FA /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */; };
 		0BB9BF001E8E930A00FBA9FA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */; };
+		0BBB02151F20B78500176DDA /* FirstNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */; };
 		0BBF609E1E96B2B5006D1920 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF609D1E96B2B5006D1920 /* RxSwift.framework */; };
 		0BEBA2C51EE7F3C400561313 /* CommunicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBA2C41EE7F3C400561313 /* CommunicationProtocol.swift */; };
 		0BEBA2C71EE81B9B00561313 /* WebSocketCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBA2C61EE81B9B00561313 /* WebSocketCommunication.swift */; };
@@ -79,6 +80,7 @@
 		0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportsOrganizerModel.swift; path = Model/SportsOrganizerModel.swift; sourceTree = "<group>"; };
 		0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
 		0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/Starscream/Starscream.framework"; sourceTree = "<group>"; };
+		0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstNameTableViewCell.swift; path = View/Registration/FirstNameTableViewCell.swift; sourceTree = "<group>"; };
 		0BBF609D1E96B2B5006D1920 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		0BEBA2C41EE7F3C400561313 /* CommunicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommunicationProtocol.swift; path = Model/CommunicationProtocol.swift; sourceTree = "<group>"; };
 		0BEBA2C61EE81B9B00561313 /* WebSocketCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocketCommunication.swift; path = Model/WebSocketCommunication.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA47A871EFB012200E7FDCB /* RegistrationViewController.swift */,
+				0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				0BEBA2C71EE81B9B00561313 /* WebSocketCommunication.swift in Sources */,
 				0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */,
 				0BFEFF531F18FF550011F62E /* messages.pb.swift in Sources */,
+				0BBB02151F20B78500176DDA /* FirstNameTableViewCell.swift in Sources */,
 				0BEBA2C51EE7F3C400561313 /* CommunicationProtocol.swift in Sources */,
 				0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */,
 				0B51F3FC1EFBCE06009BEFFE /* RegViewModel.swift in Sources */,
