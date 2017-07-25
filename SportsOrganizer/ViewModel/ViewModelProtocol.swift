@@ -18,7 +18,7 @@ protocol InitViewModelOutputs {
 }
 
 protocol InitViewModelInputs {
-    func send(message: Message)
+    func send(message: CommMessage)
 }
 
 protocol InitViewModelProtocol: ViewModelProtocol {
