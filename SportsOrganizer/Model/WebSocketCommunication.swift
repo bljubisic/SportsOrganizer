@@ -35,11 +35,11 @@ public class WebSocketCommunication: CommunicationProtocol  {
         self.socket.connect()
     }
     
-    func send(Message message: Message) -> Bool {
+    func send(Message message: CommMessage) -> Bool {
         if(!socket.isConnected && self.shouldReconnectFlag) {
             self.socket.connect()
         }
-        socket.write(string: message.message)
+        socket.write(data: message.message)
         return true
     }
     
