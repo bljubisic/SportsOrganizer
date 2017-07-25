@@ -13,26 +13,7 @@ import Contacts
 
 public class SportsOrganizerModel: SOModelProtocol {
     
-    func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
-        let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactPhoneNumbersKey]
-        let predicate: NSPredicate = NSPredicate(value: true)
-        do {
-            let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
-            var result: [AddressBook] = [AddressBook]()
-            
-            for contact in contacts {
-                var phoneNumbers = [String]()
-                for phoneNumber in contact.phoneNumbers {
-                    phoneNumbers.append(phoneNumber.value.stringValue)
-                }
-                let tmpAddressBook = AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
-                result.append(tmpAddressBook)
-            }
-            _ = completion(result)
-        } catch _ {
-            print("Error")
-        }
-    }
+
     
     var store = CNContactStore()
     var communicationPortal: CommunicationProtocol
@@ -58,7 +39,28 @@ public class SportsOrganizerModel: SOModelProtocol {
         communicationPortal.set(Model: self)
     }
     
-    func send(message: Message) {
+    func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
+        let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactBirthdayKey, CNContactPhoneNumbersKey]
+        let predicate: NSPredicate = NSPredicate(value: true)
+        do {
+            let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
+            var result: [AddressBook] = [AddressBook]()
+            
+            for contact in contacts {
+                var phoneNumbers = [String]()
+                for phoneNumber in contact.phoneNumbers {
+                    phoneNumbers.append(phoneNumber.value.stringValue)
+                }
+                let tmpAddressBook = AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
+                result.append(tmpAddressBook)
+            }
+            _ = completion(result)
+        } catch _ {
+            print("Error")
+        }
+    }
+    
+    func send(message: CommMessage) {
         _ = self.communicationPortal.send(Message: message)
     }
     
