@@ -27,7 +27,7 @@ public class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewMode
         self.textVariable = model.textSubject
     }
     
-    func send(message: Message) {
+    func send(message: CommMessage) {
         model.send(message: message)
     }
 }
