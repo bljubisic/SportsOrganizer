@@ -92,13 +92,49 @@ extension CommMessage {
 }
 
 extension CommMessage {
-    static let commMessageLens = Lens<CommMessage, Data> (
+    static let messageLens = Lens<CommMessage, Data> (
         get: { $0.message },
         set: { (m, cm) in CommMessage(message: m, state: cm.state) }
     )
     
-    static let commStateLens = Lens<CommMessage, State> (
+    static let stateLens = Lens<CommMessage, State> (
         get: { $0.state },
         set: { (s, cm) in CommMessage(message: cm.message, state: s) }
     )
 }
+
+func compose <A, B, C> (lhs: Lens<A, B>, _ rhs: Lens<B, C>) -> Lens<A, C> {
+    
+    return Lens<A, C>(
+        get: { a in rhs.get(lhs.get(a)) },
+        set: { (c, a) in lhs.set(rhs.set(c, lhs.get(a)), a) }
+    )
+}
+
+func * <A, B, C> (lhs: Lens<A, B>, rhs: Lens<B, C>) -> Lens<A, C> {
+    return compose(lhs: lhs, rhs)
+}
+precedencegroup AnotherLensPrecedenceGroup {
+    associativity: left
+}
+
+precedencegroup LensPrecedenceGroup {
+    associativity: left
+    higherThan: AnotherLensPrecedenceGroup
+}
+
+infix operator *~ : LensPrecedenceGroup
+func *~ <A, B> (lhs: Lens<A, B>, rhs: B) -> (A) -> A {
+    return { a in lhs.set(rhs, a) }
+}
+
+
+infix operator |> : AnotherLensPrecedenceGroup
+func |> <A, B> (x: A, f: (A) -> B) -> B {
+    return f(x)
+}
+
+func |> <A, B, C> (f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C {
+    return { g(f($0)) }
+}
+
