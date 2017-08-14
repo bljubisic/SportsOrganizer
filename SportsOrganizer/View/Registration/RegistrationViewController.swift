@@ -26,8 +26,11 @@ class RegistrationViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(FirstNameTableViewCell.self, forCellReuseIdentifier: "firstname")
+        self.tableView.register(LastNameTableViewCell.self, forCellReuseIdentifier: "lastname")
+        self.tableView.register(UsernameTableViewCell.self, forCellReuseIdentifier: "username")
+        self.tableView.register(PhoneNumberTableViewCell.self, forCellReuseIdentifier: "phonenumber")
         
-        self.cells = [self.tableView.dequeueReusableCell(withIdentifier: "firstname")!]
+        self.cells = [self.tableView.dequeueReusableCell(withIdentifier: "firstname")!, self.tableView.dequeueReusableCell(withIdentifier: "lastname")!, self.tableView.dequeueReusableCell(withIdentifier: "username")!, self.tableView.dequeueReusableCell(withIdentifier: "phonenumber")!]
         // Do any additional setup after loading the view.
     }
 
@@ -49,12 +52,31 @@ extension RegistrationViewController: UITableViewDataSource {
         let disposeBag: DisposeBag = DisposeBag()
         if(indexPath.row == 0) {
             let observable: Observable<String?> = (cell as! FirstNameTableViewCell).firstNameTextField.rx.text.asObservable()
-            observable.subscribe(onNext: {(string: String?) in
-                print(string!)
+            observable.subscribe(onNext: {(firstname: String?) in
+                print(firstname!)
             },
                                  onCompleted: {
                                     
                                     
+            }).addDisposableTo(disposeBag)
+        }
+        else if indexPath.row == 1 {
+            let lastNameObservable: Observable<String?> = (cell as! LastNameTableViewCell).lastNameTextField.rx.text.asObservable()
+            lastNameObservable.subscribe(onNext: { (lastname: String?) in
+                print(lastname!)
+            }).addDisposableTo(disposeBag)
+        }
+        else if indexPath.row == 2 {
+            let usernameObservable: Observable<String?> = (cell as! UsernameTableViewCell).usernameTextField.rx.text.asObservable()
+            usernameObservable.subscribe(onNext: { (username: String?) in
+                print(username!)
+            }).addDisposableTo(disposeBag)
+            
+        }
+        else if indexPath.row == 3 {
+            let phoneNumberObservable: Observable<String?> = (cell as! PhoneNumberTableViewCell).phoneNumberTextField.rx.text.asObservable()
+            phoneNumberObservable.subscribe(onNext: {(phonenumber: String?) in
+                print(phonenumber!)
             }).addDisposableTo(disposeBag)
         }
         return cell
