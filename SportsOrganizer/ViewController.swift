@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         self.sendButton = UIButton(frame: CGRect(x: 0, y: 0, width: 46, height: 30))
         
         self.sendButton.setTitle("Send", for: UIControlState.normal)
-        self.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        //self.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         
         self.responseTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 343, height: 128))
         
@@ -94,12 +94,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func sendMessage() {
-        let message = Message(message: self.messageTextField!.text!, timeStamp: Date())
-        self.viewModel.inputs.send(message: message)
-    }
-
-
 }
 
