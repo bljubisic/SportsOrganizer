@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
 
 class FirstNameTableViewCell: UITableViewCell {
 
@@ -20,12 +21,18 @@ class FirstNameTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         firstNameTextField = UITextField()
+        firstNameTextField.placeholder = "Firstname"
+        firstNameTextField.font = UIFont.systemFont(ofSize: 15)
+        firstNameTextField.borderStyle = UITextBorderStyle.roundedRect
+        firstNameTextField.autocorrectionType = UITextAutocorrectionType.no
+        firstNameTextField.keyboardType = UIKeyboardType.default
+        firstNameTextField.returnKeyType = UIReturnKeyType.done
         contentView.addSubview(firstNameTextField)
         firstNameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentView.snp.top).inset(-5.0)
-            make.bottom.equalTo(self.contentView.snp.bottom).inset(-5.5)
-            make.leading.equalTo(self.contentView.snp.leading).inset(-8.0)
-            make.trailing.equalTo(self.contentView.snp.trailing).inset(-8.0)
+            make.top.equalTo(self.contentView.snp.top).inset(30.0)
+            make.bottom.equalTo(self.contentView.snp.bottom).inset(30.5)
+            make.leading.equalTo(self.contentView.snp.leading).inset(10.0)
+            make.trailing.equalTo(self.contentView.snp.trailing).inset(10.0)
         }
         
         
