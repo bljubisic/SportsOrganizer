@@ -15,10 +15,23 @@ class RegistrationViewController: UIViewController {
     
     var tableView: UITableView!
     var viewModel: RegViewModelProtocol!
-    var cells: [UITableViewCell]!
+    var firstNameCell: FirstNameTableViewCell = FirstNameTableViewCell()
+    var lastNameCell: LastNameTableViewCell = LastNameTableViewCell()
+    var usernameCell: UsernameTableViewCell = UsernameTableViewCell()
+    var phoneNumberCell: PhoneNumberTableViewCell = PhoneNumberTableViewCell()
+    var firstNameObservable: Observable<String?>!
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let sendRegistration = UIBarButtonItem()
+        sendRegistration.title = "Add"
+        sendRegistration.action = #selector(createAndSendRegistration)
+        
+        self.navigationItem.title = "Registration"
+        self.navigationItem.rightBarButtonItem = sendRegistration
+        
         
         self.tableView = UITableView()
     
@@ -29,9 +42,57 @@ class RegistrationViewController: UIViewController {
         self.tableView.register(LastNameTableViewCell.self, forCellReuseIdentifier: "lastname")
         self.tableView.register(UsernameTableViewCell.self, forCellReuseIdentifier: "username")
         self.tableView.register(PhoneNumberTableViewCell.self, forCellReuseIdentifier: "phonenumber")
-        
-        self.cells = [self.tableView.dequeueReusableCell(withIdentifier: "firstname")!, self.tableView.dequeueReusableCell(withIdentifier: "lastname")!, self.tableView.dequeueReusableCell(withIdentifier: "username")!, self.tableView.dequeueReusableCell(withIdentifier: "phonenumber")!]
+        self.firstNameCell.firstNameTextField.rx.text.subscribe(
+            onNext: {(firstname: String?) in
+                guard let firstnameUnwrapped = firstname else {
+                    return
+                }
+                self.viewModel.firstname = firstnameUnwrapped
+            },
+            onCompleted: {
+                print("Done")
+        }).addDisposableTo(self.disposeBag)
+        self.lastNameCell.lastNameTextField.rx.text.subscribe(
+            onNext: {lastname in
+                guard let lastnameUnwrapped = lastname else {
+                    return
+                }
+                self.viewModel.lastname = lastnameUnwrapped
+            },
+            onCompleted: {
+                print("Done")
+        }).addDisposableTo(self.disposeBag)
+        self.usernameCell.usernameTextField.rx.text.subscribe(
+            onNext: {username in
+                guard let usernameUnwrapped = username else {
+                    return
+                }
+                self.viewModel.username = usernameUnwrapped
+            },
+            onCompleted: {
+                print("Done")
+            }
+        ).addDisposableTo(self.disposeBag)
+        self.phoneNumberCell.phoneNumberTextField.rx.text.subscribe(
+            onNext: {phoneNumber in
+                guard let phoneNumberUnwrapped = phoneNumber else {
+                    return
+                }
+                self.viewModel.phoneNumber = phoneNumberUnwrapped
+            },
+            onCompleted: {
+                print("Done")
+            }
+        ).addDisposableTo(self.disposeBag)
         // Do any additional setup after loading the view.
+        self.tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
+        }
+        self.tableView.reloadData()
+    }
+    
+    func createAndSendRegistration() {
+        let _ = self.viewModel.outputs.sendRegistration(Message: self.viewModel.outputs.createRegMessage())
     }
 
 }
@@ -43,43 +104,26 @@ extension RegistrationViewController: UITableViewDelegate {
 }
 
 extension RegistrationViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        //print("returned size: 6")
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.cells[indexPath.row]
-        let disposeBag: DisposeBag = DisposeBag()
         if(indexPath.row == 0) {
-            let observable: Observable<String?> = (cell as! FirstNameTableViewCell).firstNameTextField.rx.text.asObservable()
-            observable.subscribe(onNext: {(firstname: String?) in
-                print(firstname!)
-            },
-                                 onCompleted: {
-                                    
-                                    
-            }).addDisposableTo(disposeBag)
+            return self.firstNameCell
         }
         else if indexPath.row == 1 {
-            let lastNameObservable: Observable<String?> = (cell as! LastNameTableViewCell).lastNameTextField.rx.text.asObservable()
-            lastNameObservable.subscribe(onNext: { (lastname: String?) in
-                print(lastname!)
-            }).addDisposableTo(disposeBag)
+            return self.lastNameCell
         }
         else if indexPath.row == 2 {
-            let usernameObservable: Observable<String?> = (cell as! UsernameTableViewCell).usernameTextField.rx.text.asObservable()
-            usernameObservable.subscribe(onNext: { (username: String?) in
-                print(username!)
-            }).addDisposableTo(disposeBag)
+            return self.usernameCell
             
         }
-        else if indexPath.row == 3 {
-            let phoneNumberObservable: Observable<String?> = (cell as! PhoneNumberTableViewCell).phoneNumberTextField.rx.text.asObservable()
-            phoneNumberObservable.subscribe(onNext: {(phonenumber: String?) in
-                print(phonenumber!)
-            }).addDisposableTo(disposeBag)
+        else {
+            return self.phoneNumberCell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
