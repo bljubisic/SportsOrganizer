@@ -33,19 +33,17 @@ extension Message {
 }
 
 struct RegMessage {
-    let name: String
-    let sport: String
-    let birthday: Date
-    let country: String
+    let firstname: String
+    let lastname: String
+    let username: String
     let phone: String
 }
 
 extension RegMessage {
     init() {
-        name = ""
-        sport = ""
-        birthday = Date()
-        country = ""
+        firstname = ""
+        lastname = ""
+        username = ""
         phone = ""
     }
 }
