@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-public class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModelOutputs {
+final class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModelOutputs {
     
     var model: SOModelProtocol
     var textVariable: Observable<CommMessage>
