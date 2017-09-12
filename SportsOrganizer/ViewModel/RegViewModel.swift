@@ -9,33 +9,20 @@
 import Foundation
 import RxSwift
 
-class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModelOutputs {
-    func save(firstName name: String) -> Bool {
-        return true
+final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModelOutputs {
+    
+    var outputs: RegViewModelOutputs {
+        return self
     }
     
-    func save(lastName name: String) -> Bool {
-        return true
-    }
     
-    func save(userName name: String) -> Bool {
-        return true
-    }
+    var firstname: String = ""
+    var lastname: String = ""
+    var username: String = ""
+    var phoneNumber: String = ""
     
-    func save(sport: String) -> Bool {
-        return true
-    }
-    
-    func save(birthDay date: Date) -> Bool {
-        return true
-    }
-    
-    func save(country: String) -> Bool {
-        return true
-    }
-    
-    func save(phoneNumber phone: String) -> Bool {
-        return true
+    func createRegMessage() -> RegMessage {
+        return RegMessage(firstname: self.firstname, lastname: self.lastname, username: self.username, phone: self.phoneNumber)
     }
     
     func sendRegistration(Message message: RegMessage) -> Bool {
@@ -48,10 +35,6 @@ class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModelOutput
     var regResponse: Observable<CommMessage>
     
     var inputs: RegViewModelInputs {
-        return self
-    }
-    
-    var outputs: RegViewModelOutputs {
         return self
     }
     
