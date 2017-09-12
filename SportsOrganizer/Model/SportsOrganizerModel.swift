@@ -11,7 +11,7 @@ import Starscream
 import RxSwift
 import Contacts
 
-public class SportsOrganizerModel: SOModelProtocol {
+final class SportsOrganizerModel: SOModelProtocol {
     
 
     
