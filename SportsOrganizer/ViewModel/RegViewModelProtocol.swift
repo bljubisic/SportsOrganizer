@@ -10,13 +10,7 @@ import Foundation
 import RxSwift
 
 protocol RegViewModelOutputs {
-    func save(firstName name: String) -> Bool
-    func save(lastName name: String) -> Bool
-    func save(userName name: String) -> Bool
-    func save(sport: String) -> Bool
-    func save(birthDay date: Date) -> Bool
-    func save(country: String) -> Bool
-    func save(phoneNumber phone: String) -> Bool
+    func createRegMessage() -> RegMessage
     func sendRegistration(Message message: RegMessage) -> Bool
 }
 
@@ -25,7 +19,12 @@ protocol RegViewModelInputs {
 }
 
 protocol RegViewModelProtocol {
+    var firstname: String {get set}
+    var lastname: String {get set}
+    var username: String {get set}
+    var phoneNumber: String {get set}
+    
     var model: SOModelProtocol { get }
-    var outputs: RegViewModelOutputs { get }
+    var outputs: RegViewModelOutputs {get}
     var inputs: RegViewModelInputs { get }
 }
