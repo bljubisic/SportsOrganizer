@@ -10,7 +10,7 @@ import Foundation
 import Starscream
 import RxSwift
 
-public class WebSocketCommunication: CommunicationProtocol  {
+final class WebSocketCommunication: CommunicationProtocol  {
     
     var socket: WebSocket
     var shouldReconnectFlag: Bool
@@ -48,15 +48,22 @@ public class WebSocketCommunication: CommunicationProtocol  {
             self.socket.connect()
         }
         var registrationRequestBuilder = Com_Sportorganizer_Proto_Msgs_RegistrationRequest()
-        registrationRequestBuilder.firstName = message.name
-        registrationRequestBuilder.lastName = message.name
-        registrationRequestBuilder.username = message.name
+        registrationRequestBuilder.firstName = message.firstname
+        registrationRequestBuilder.lastName = message.lastname
+        registrationRequestBuilder.username = message.username
         registrationRequestBuilder.phoneNumber = message.phone
         registrationRequestBuilder.alreadyRegistred = false
+        var deviceInfo = Com_Sportorganizer_Proto_Msgs_DeviceInfo()
+        deviceInfo.deviceName = "iPhone 7"
+        deviceInfo.os = "iOS 10"
+        deviceInfo.platform = "iOS"
+        deviceInfo.processor = "A10"
+        registrationRequestBuilder.deviceInfo = deviceInfo
         do {
+            print("Registration: \(registrationRequestBuilder)")
             try socket.write(data: registrationRequestBuilder.serializedData())
-        } catch(_) {
-            
+        } catch let error as Error {
+            print("error: \(error)")
         }
         return true
     }
