@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initViewController = InitialViewController()
         
         initViewController.viewModel = ViewModel(withModel: model)
-        window?.rootViewController = initViewController
+        window?.rootViewController = UINavigationController(rootViewController: initViewController)
         window?.makeKeyAndVisible()
         return true
     }
