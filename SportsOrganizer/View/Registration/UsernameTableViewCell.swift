@@ -21,13 +21,19 @@ class UsernameTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         usernameTextField = UITextField()
+        usernameTextField.placeholder = "Username"
+        usernameTextField.font = UIFont.systemFont(ofSize: 15)
+        usernameTextField.borderStyle = UITextBorderStyle.roundedRect
+        usernameTextField.autocorrectionType = UITextAutocorrectionType.no
+        usernameTextField.keyboardType = UIKeyboardType.default
+        usernameTextField.returnKeyType = UIReturnKeyType.done
         contentView.addSubview(usernameTextField)
-
+        
         usernameTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentView.snp.top).inset(-5.0)
-            make.bottom.equalTo(self.contentView.snp.bottom).inset(-5.5)
-            make.leading.equalTo(self.contentView.snp.leading).inset(-8.0)
-            make.trailing.equalTo(self.contentView.snp.trailing).inset(-8.0)
+            make.top.equalTo(self.contentView.snp.top).inset(30.0)
+            make.bottom.equalTo(self.contentView.snp.bottom).inset(30.5)
+            make.leading.equalTo(self.contentView.snp.leading).inset(10.0)
+            make.trailing.equalTo(self.contentView.snp.trailing).inset(10.0)
         }
     }
     
