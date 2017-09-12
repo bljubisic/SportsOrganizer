@@ -33,22 +33,29 @@ class InitialViewController: UIViewController {
         self.startButton.isEnabled = false
         self.startButton.addTarget(self, action: #selector(startEvent), for: .touchUpInside)
         
-        self.viewModel.outputs.textVariable.map { (result: CommMessage) -> Data in
+        self.viewModel.outputs.textVariable.subscribe(onNext: { result in
             if(result.state == .initialState) {
-                self.startButton.isEnabled = true
+                let registrationViewController = RegistrationViewController()
+                
+                registrationViewController.viewModel = RegViewModel(withModel: self.viewModel.model)
+                self.navigationController?.pushViewController(registrationViewController, animated: true)
+                
             }
-            return result.message
-            }.subscribe(onNext: { result in
-                print("Result: \(result)")
-            }, onError: { (Error) in
-                print("error")
-            }, onCompleted: {
-                print("completed")
-            }) {
-                print("Something")
-        }.addDisposableTo(disposeBag)
+            print("Result: \(result)")
+        }, onError: { (Error) in
+            print("error")
+        }, onCompleted: {
+            print("completed")
+        }) {
+            print("Something")
+            }.addDisposableTo(disposeBag)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+
+        
+
+    }
     func startEvent() {
         print("START")
     }
