@@ -10,12 +10,12 @@ import Foundation
 import RxSwift
 
 protocol RegViewModelOutputs {
-    func createRegMessage() -> RegMessage
-    func sendRegistration(Message message: RegMessage) -> Bool
+    var textSubject: Observable<CommMessage> { get }
 }
 
 protocol RegViewModelInputs {
-    var regResponse: Observable<CommMessage> { get }
+    func createRegMessage() -> RegMessage
+    func sendRegistration(Message message: RegMessage) -> Bool
 }
 
 protocol RegViewModelProtocol {
