@@ -13,8 +13,6 @@ import Contacts
 
 final class SportsOrganizerModel: SOModelProtocol {
     
-
-    
     var store = CNContactStore()
     var communicationPortal: CommunicationProtocol
     var textSubject: Observable<CommMessage>!
@@ -66,6 +64,10 @@ final class SportsOrganizerModel: SOModelProtocol {
     
     func sendRegistration(message: RegMessage) {
         _ = self.communicationPortal.sendRegistration(Message: message)
+    }
+    
+    func sendToken(message: TokenMessage) {
+        _ = self.communicationPortal.sendToken(Message: message)
     }
     
     func create(message: Message) -> Bool {
