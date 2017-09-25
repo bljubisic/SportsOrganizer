@@ -10,11 +10,12 @@ import Foundation
 import RxSwift
 
 final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModelOutputs {
+    var textSubject: Observable<CommMessage>
+    
     
     var outputs: RegViewModelOutputs {
         return self
     }
-    
     
     var firstname: String = ""
     var lastname: String = ""
@@ -32,14 +33,12 @@ final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModel
     
     var model: SOModelProtocol
     
-    var regResponse: Observable<CommMessage>
-    
     var inputs: RegViewModelInputs {
         return self
     }
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.regResponse = model.textSubject
+        self.textSubject = model.textSubject
     }
 }
