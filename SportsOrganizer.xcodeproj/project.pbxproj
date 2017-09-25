@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0AE0AE10201867BF4845BD65 /* Pods_SportsOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 864AEB1271B58478E52CE63F /* Pods_SportsOrganizer.framework */; };
+		0B0D480D1F766E3B00E93245 /* TokenViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D480C1F766E3B00E93245 /* TokenViewModelProtocol.swift */; };
+		0B0D480F1F766FF400E93245 /* TokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D480E1F766FF400E93245 /* TokenViewModel.swift */; };
+		0B0D48151F783D8100E93245 /* SportsOrganizerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B0D48131F783D8100E93245 /* SportsOrganizerModel.xcdatamodeld */; };
 		0B234F221E8C52A00017748B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B234F211E8C52A00017748B /* AppDelegate.swift */; };
 		0B234F241E8C52A00017748B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B234F231E8C52A00017748B /* ViewController.swift */; };
 		0B234F271E8C52A00017748B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B234F251E8C52A00017748B /* Main.storyboard */; };
@@ -26,6 +29,7 @@
 		0BADA9E21F2A498900BBDF67 /* UsernameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADA9E11F2A498900BBDF67 /* UsernameTableViewCell.swift */; };
 		0BADA9E41F2A54ED00BBDF67 /* PhoneNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADA9E31F2A54ED00BBDF67 /* PhoneNumberTableViewCell.swift */; };
 		0BADA9E61F2DF44E00BBDF67 /* AlreadyAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADA9E51F2DF44E00BBDF67 /* AlreadyAccountTableViewCell.swift */; };
+		0BB25F941F710E0A00B07AC5 /* EnterTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB25F931F710E0900B07AC5 /* EnterTokenViewController.swift */; };
 		0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */; };
 		0BB9BEFC1E8E5E0800FBA9FA /* SportsOrganizerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */; };
 		0BB9BEFE1E8E930600FBA9FA /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */; };
@@ -57,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B0D480C1F766E3B00E93245 /* TokenViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenViewModelProtocol.swift; path = ViewModel/TokenViewModelProtocol.swift; sourceTree = "<group>"; };
+		0B0D480E1F766FF400E93245 /* TokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TokenViewModel.swift; path = ViewModel/TokenViewModel.swift; sourceTree = "<group>"; };
+		0B0D48141F783D8100E93245 /* SportsOrganizerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsOrganizerModel.xcdatamodel; sourceTree = "<group>"; };
 		0B234F1E1E8C52A00017748B /* SportsOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B234F211E8C52A00017748B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B234F231E8C52A00017748B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +88,7 @@
 		0BADA9E11F2A498900BBDF67 /* UsernameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsernameTableViewCell.swift; path = View/Registration/UsernameTableViewCell.swift; sourceTree = "<group>"; };
 		0BADA9E31F2A54ED00BBDF67 /* PhoneNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhoneNumberTableViewCell.swift; path = View/Registration/PhoneNumberTableViewCell.swift; sourceTree = "<group>"; };
 		0BADA9E51F2DF44E00BBDF67 /* AlreadyAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlreadyAccountTableViewCell.swift; path = View/Registration/AlreadyAccountTableViewCell.swift; sourceTree = "<group>"; };
+		0BB25F931F710E0900B07AC5 /* EnterTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnterTokenViewController.swift; path = View/Registration/EnterTokenViewController.swift; sourceTree = "<group>"; };
 		0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOModelProtocol.swift; path = Model/SOModelProtocol.swift; sourceTree = "<group>"; };
 		0BB9BEFB1E8E5E0800FBA9FA /* SportsOrganizerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SportsOrganizerModel.swift; path = Model/SportsOrganizerModel.swift; sourceTree = "<group>"; };
 		0BB9BEFD1E8E930600FBA9FA /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
@@ -130,6 +138,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0D48121F783D1300E93245 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0B0D48131F783D8100E93245 /* SportsOrganizerModel.xcdatamodeld */,
+			);
+			name = CoreData;
+			path = Model/CoreData;
+			sourceTree = "<group>";
+		};
 		0B234F151E8C529F0017748B = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +216,11 @@
 			isa = PBXGroup;
 			children = (
 				0B24CE561E953AEF009D88F2 /* ViewModelProtocol.swift */,
-				0B24CE581E95833E009D88F2 /* ViewModel.swift */,
 				0BA47A891EFB01C800E7FDCB /* RegViewModelProtocol.swift */,
+				0B0D480C1F766E3B00E93245 /* TokenViewModelProtocol.swift */,
+				0B24CE581E95833E009D88F2 /* ViewModel.swift */,
 				0B51F3FB1EFBCE06009BEFFE /* RegViewModel.swift */,
+				0B0D480E1F766FF400E93245 /* TokenViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -209,6 +228,7 @@
 		0B234F511E8C546D0017748B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B0D48121F783D1300E93245 /* CoreData */,
 				0BFEFF511F18FE330011F62E /* Message.swift */,
 				0BFEFF4E1F18FCE20011F62E /* messages.pb.swift */,
 				0BB9BEF71E8DAEC400FBA9FA /* SOModelProtocol.swift */,
@@ -222,6 +242,7 @@
 		0BA47A841EFAFF7A00E7FDCB /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				0BB25F931F710E0900B07AC5 /* EnterTokenViewController.swift */,
 				0BA47A871EFB012200E7FDCB /* RegistrationViewController.swift */,
 				0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */,
 				0BADA9DF1F2A246F00BBDF67 /* LastNameTableViewCell.swift */,
@@ -330,8 +351,13 @@
 				TargetAttributes = {
 					0B234F1D1E8C529F0017748B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = ENT89NLKC9;
+						DevelopmentTeam = W3FZKU8HEQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					0B234F311E8C52A00017748B = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -525,9 +551,11 @@
 				0BADA9E21F2A498900BBDF67 /* UsernameTableViewCell.swift in Sources */,
 				0BADA9E41F2A54ED00BBDF67 /* PhoneNumberTableViewCell.swift in Sources */,
 				0BFEFF531F18FF550011F62E /* messages.pb.swift in Sources */,
+				0B0D48151F783D8100E93245 /* SportsOrganizerModel.xcdatamodeld in Sources */,
 				0BBB02151F20B78500176DDA /* FirstNameTableViewCell.swift in Sources */,
 				0BEBA2C51EE7F3C400561313 /* CommunicationProtocol.swift in Sources */,
 				0B24CE591E95833E009D88F2 /* ViewModel.swift in Sources */,
+				0B0D480D1F766E3B00E93245 /* TokenViewModelProtocol.swift in Sources */,
 				0B51F3FC1EFBCE06009BEFFE /* RegViewModel.swift in Sources */,
 				0B45CE5A1EE35D0200EE6149 /* InitialViewController.swift in Sources */,
 				0BA47A881EFB012200E7FDCB /* RegistrationViewController.swift in Sources */,
@@ -539,6 +567,8 @@
 				0B234F241E8C52A00017748B /* ViewController.swift in Sources */,
 				0BADA9E01F2A246F00BBDF67 /* LastNameTableViewCell.swift in Sources */,
 				0B234F221E8C52A00017748B /* AppDelegate.swift in Sources */,
+				0B0D480F1F766FF400E93245 /* TokenViewModel.swift in Sources */,
+				0BB25F941F710E0A00B07AC5 /* EnterTokenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,7 +733,7 @@
 			baseConfigurationReference = F955994C0CDC8ED10A31B81A /* Pods-SportsOrganizer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ENT89NLKC9;
+				DEVELOPMENT_TEAM = W3FZKU8HEQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
@@ -724,7 +754,7 @@
 			baseConfigurationReference = 1C970CB33BD2AF29EA86937C /* Pods-SportsOrganizer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ENT89NLKC9;
+				DEVELOPMENT_TEAM = W3FZKU8HEQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
@@ -840,6 +870,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0B0D48131F783D8100E93245 /* SportsOrganizerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B0D48141F783D8100E93245 /* SportsOrganizerModel.xcdatamodel */,
+			);
+			currentVersion = 0B0D48141F783D8100E93245 /* SportsOrganizerModel.xcdatamodel */;
+			path = SportsOrganizerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B234F161E8C529F0017748B /* Project object */;
 }
