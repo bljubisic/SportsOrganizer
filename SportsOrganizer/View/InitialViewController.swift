@@ -34,12 +34,11 @@ class InitialViewController: UIViewController {
         self.startButton.addTarget(self, action: #selector(startEvent), for: .touchUpInside)
         
         self.viewModel.outputs.textVariable.subscribe(onNext: { result in
-            if(result.state == .initialState) {
+            if(result.state == .started) {
                 let registrationViewController = RegistrationViewController()
                 
                 registrationViewController.viewModel = RegViewModel(withModel: self.viewModel.model)
                 self.navigationController?.pushViewController(registrationViewController, animated: true)
-                
             }
             print("Result: \(result)")
         }, onError: { (Error) in
