@@ -47,22 +47,40 @@ final class WebSocketCommunication: CommunicationProtocol  {
         if(!socket.isConnected && self.shouldReconnectFlag) {
             self.socket.connect()
         }
-        var registrationRequestBuilder = Com_Sportorganizer_Proto_Msgs_RegistrationRequest()
-        registrationRequestBuilder.firstName = message.firstname
-        registrationRequestBuilder.lastName = message.lastname
-        registrationRequestBuilder.username = message.username
-        registrationRequestBuilder.phoneNumber = message.phone
-        registrationRequestBuilder.alreadyRegistred = false
+        var appMessage = Com_Sportorganizer_Proto_Msgs_AppMessage()
+        appMessage.channelID = .hanshake
+        appMessage.registrationRequest.firstName = message.firstname
+        appMessage.registrationRequest.lastName = message.lastname
+        appMessage.registrationRequest.username = message.username
+        appMessage.registrationRequest.phoneNumber = message.phone
+        appMessage.registrationRequest.alreadyRegistred = false
         var deviceInfo = Com_Sportorganizer_Proto_Msgs_DeviceInfo()
         deviceInfo.deviceName = "iPhone 7"
         deviceInfo.os = "iOS 10"
         deviceInfo.platform = "iOS"
         deviceInfo.processor = "A10"
-        registrationRequestBuilder.deviceInfo = deviceInfo
+        appMessage.registrationRequest.deviceInfo = deviceInfo
         do {
-            print("Registration: \(registrationRequestBuilder)")
-            try socket.write(data: registrationRequestBuilder.serializedData())
-        } catch let error as Error {
+            print("Registration: \(appMessage.registrationRequest)")
+            try socket.write(data: appMessage.serializedData())
+        } catch let error {
+            print("error: \(error)")
+        }
+        return true
+    }
+    
+    func sendToken(Message message: TokenMessage) -> Bool {
+        if(!socket.isConnected && self.shouldReconnectFlag) {
+            self.socket.connect()
+        }
+        var appMessage = Com_Sportorganizer_Proto_Msgs_AppMessage()
+        appMessage.channelID = .hanshake
+        appMessage.registrationToken.phoneNumber = message.phone
+        appMessage.registrationToken.token = message.token
+        do {
+            print("Registration: \(appMessage.registrationToken)")
+            try socket.write(data: appMessage.serializedData())
+        } catch let error {
             print("error: \(error)")
         }
         return true
@@ -96,10 +114,16 @@ extension WebSocketCommunication: WebSocketDelegate {
     
     public func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print("Received data: \(data)")
-        var state = self.model.modelState.value
-        state.changeState(from: state, to: .initialState)
-        self.model.modelState.value = state
-        self.messagesData.value = data
+        do {
+            let message =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: data)
+            print(message)
+            var state = self.model.modelState.value
+            state.changeState(from: state, type: message.channelID, message: message)
+            self.model.modelState.value = state
+            self.messagesData.value = data
+        } catch let error {
+            print(error)
+        }
     }
     
 }
