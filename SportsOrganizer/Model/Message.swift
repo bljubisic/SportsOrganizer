@@ -32,6 +32,18 @@ extension Message {
     )
 }
 
+struct TokenMessage {
+    let phone: String
+    let token: String
+}
+
+extension TokenMessage {
+    init() {
+        phone = ""
+        token = ""
+    }
+}
+
 struct RegMessage {
     let firstname: String
     let lastname: String
@@ -61,18 +73,29 @@ extension AddressBook {
 }
 
 enum State {
-    case initialState
-    case sendingMessage
-    case waitingResponse
     case idle
+    case started
+    case validateToken
+    case confirmed
+    case completed
     
-    mutating func changeState(from: State, to: State) {
+    mutating func changeState(from: State, type: Com_Sportorganizer_Proto_Msgs_AppMessage.MessageChannel, message: Com_Sportorganizer_Proto_Msgs_AppMessage) {
         // TODO: For now let this be like this, but should be changed with rules when and how state could be changed
         switch self {
-        case .idle: self = .initialState
-        case .initialState: self = .sendingMessage
-        case .sendingMessage: self = .waitingResponse
-        case .waitingResponse: self = .idle
+        case .idle:
+            if(type == .hanshake) {
+                self = .started
+            }
+        case .started:
+            if(type == .hanshake) {
+                self = .validateToken
+            }
+        case .validateToken:
+            self = .confirmed
+        case .confirmed:
+            self = .completed
+        case .completed:
+            self = .idle
         }
     }
 }
