@@ -84,6 +84,21 @@ class RegistrationViewController: UIViewController {
                 print("Done")
             }
         ).addDisposableTo(self.disposeBag)
+        self.viewModel.outputs.textSubject.subscribe(onNext: { result in
+            if(result.state == .validateToken) {
+                let enterTokenViewController = EnterTokenViewController()
+                
+                enterTokenViewController.viewModel = TokenViewModel(withModel: self.viewModel.model, andPhone: self.viewModel.phoneNumber)
+                self.navigationController?.pushViewController(enterTokenViewController, animated: true)
+            }
+            print("Result: \(result)")
+        }, onError: { (Error) in
+            print("error")
+        }, onCompleted: {
+            print("completed")
+        }) {
+            print("Something")
+            }.addDisposableTo(disposeBag)
         // Do any additional setup after loading the view.
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
@@ -92,7 +107,7 @@ class RegistrationViewController: UIViewController {
     }
     
     func createAndSendRegistration() {
-        let _ = self.viewModel.outputs.sendRegistration(Message: self.viewModel.outputs.createRegMessage())
+        let _ = self.viewModel.inputs.sendRegistration(Message: self.viewModel.inputs.createRegMessage())
     }
 
 }
@@ -119,7 +134,6 @@ extension RegistrationViewController: UITableViewDataSource {
         }
         else if indexPath.row == 2 {
             return self.usernameCell
-            
         }
         else {
             return self.phoneNumberCell
