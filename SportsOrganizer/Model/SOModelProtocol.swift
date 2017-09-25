@@ -13,9 +13,11 @@ import RxCocoa
 protocol SOModelProtocol {
     var textSubject: Observable<CommMessage>! { get }
     var modelState: Variable<State> { get }
+    var state: State { get }
     
     func send(message: CommMessage) -> Void
     func sendRegistration(message: RegMessage) -> Void
+    func sendToken(message: TokenMessage) -> Void
     func create(message: Message) -> Bool
     func changeState(from state:State, to: State) -> Void
     func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) -> Void
