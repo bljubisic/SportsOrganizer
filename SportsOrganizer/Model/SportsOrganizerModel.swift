@@ -15,8 +15,7 @@ final class SportsOrganizerModel: SOModelProtocol {
     
     var store = CNContactStore()
     var communicationPortal: CommunicationProtocol
-    var textSubject: Observable<CommMessage>!
-    var modelState: Variable<State>
+    var textSubject: Variable<CommMessage>
     var state: State
     private let disposeBag = DisposeBag()
     
@@ -25,7 +24,7 @@ final class SportsOrganizerModel: SOModelProtocol {
         communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!, shouldReconnect: true)
         self.communicationPortal.connect()
         self.state = .idle
-        self.modelState = Variable(.idle)
+        self.textSubject = Variable<CommMessage>(CommMessage())
         let messagesDataFiltered = self.communicationPortal.messagesData.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -33,6 +32,25 @@ final class SportsOrganizerModel: SOModelProtocol {
                 print("Message!!!")
                 return (message != Data())
             }
+        messagesDataFiltered.subscribe(onNext: { (message) in
+            do {
+                let appMessage = try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
+                if(self.state == .validateToken) {
+                    let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
+                    keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as String as AnyObject
+                }
+                self.state.changeState(from: self.state, type: appMessage.channelID, message: appMessage)
+                self.textSubject.value = CommMessage(message: message, state: self.state)
+            } catch(let error) {
+                print(error)
+            }
+        }, onError: { (error) in
+            print(error)
+        }, onCompleted: {
+            print("Completed")
+        }) {
+            print("Something")
+        }.addDisposableTo(disposeBag)
         /*
         textSubject = self.modelState.asObservable().withLatestFrom(messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
             print("Message received: \(message) and state is \(state)")
@@ -44,18 +62,6 @@ final class SportsOrganizerModel: SOModelProtocol {
             return CommMessage(message: message, state: state)
         })
         */
-        
-        textSubject = Observable.combineLatest(modelState.asObservable(), messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
-            print("Message received: \(message) and state is \(state)")
-            if(state == .confirmed) {
-                let appMessage =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
-                print("This is received message: \(appMessage.status.rawValue)")
-                let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
-                keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject?
-            }
-            return CommMessage(message: message, state: state)
-        })
-        
         communicationPortal.set(Model: self)
     }
     
@@ -64,16 +70,12 @@ final class SportsOrganizerModel: SOModelProtocol {
         let predicate: NSPredicate = NSPredicate(value: true)
         do {
             let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
-            var result: [AddressBook] = [AddressBook]()
-            
-            for contact in contacts {
-                var phoneNumbers = [String]()
-                for phoneNumber in contact.phoneNumbers {
-                    phoneNumbers.append(phoneNumber.value.stringValue)
-                }
-                let tmpAddressBook = AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
-                result.append(tmpAddressBook)
-            }
+            let result: [AddressBook] = contacts.map({ (contact) -> AddressBook in
+                let phoneNumbers = contact.phoneNumbers.map({ (phoneNumber) -> String in
+                    return phoneNumber.value.stringValue
+                })
+                return AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
+            })
             _ = completion(result)
         } catch _ {
             print("Error")
