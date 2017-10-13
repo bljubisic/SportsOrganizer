@@ -39,6 +39,6 @@ final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModel
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.textSubject = model.textSubject
+        self.textSubject = model.textSubject.asObservable()
     }
 }
