@@ -115,15 +115,12 @@ extension WebSocketCommunication: WebSocketDelegate {
     public func websocketDidReceiveData(socket: WebSocket, data: Data) {
         print("Received data: \(data)")
         do {
-            let message =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: data)
-            print(message)
-            var state = self.model.modelState.value
-            state.changeState(from: state, type: message.channelID, message: message)
-            self.model.modelState.value = state
-            self.messagesData.value = data
-        } catch let error {
+            let appMessage = try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: data)
+            print(appMessage)
+        } catch (let error) {
             print(error)
         }
+        self.messagesData.value = data
     }
     
 }
