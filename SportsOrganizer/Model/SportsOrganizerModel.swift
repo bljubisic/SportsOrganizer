@@ -26,14 +26,36 @@ final class SportsOrganizerModel: SOModelProtocol {
         self.communicationPortal.connect()
         self.state = .idle
         self.modelState = Variable(.idle)
-        let messagesDataFiltered = self.communicationPortal.messagesData.asObservable().filter { (message) -> Bool in
-            print("Message!!!")
-            return (message != Data())
-        }
-        textSubject = Observable.combineLatest(modelState.asObservable(), messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
+        let messagesDataFiltered = self.communicationPortal.messagesData.asObservable()
+            .throttle(0.3, scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .filter { (message) -> Bool in
+                print("Message!!!")
+                return (message != Data())
+            }
+        /*
+        textSubject = self.modelState.asObservable().withLatestFrom(messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
             print("Message received: \(message) and state is \(state)")
+            if(state == .confirmed) {
+                let appMessage =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
+                let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
+                keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject?
+            }
             return CommMessage(message: message, state: state)
         })
+        */
+        
+        textSubject = Observable.combineLatest(modelState.asObservable(), messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
+            print("Message received: \(message) and state is \(state)")
+            if(state == .confirmed) {
+                let appMessage =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
+                print("This is received message: \(appMessage.status.rawValue)")
+                let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
+                keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject?
+            }
+            return CommMessage(message: message, state: state)
+        })
+        
         communicationPortal.set(Model: self)
     }
     
