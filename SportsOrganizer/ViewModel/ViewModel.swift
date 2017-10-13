@@ -24,7 +24,7 @@ final class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModel
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.textVariable = model.textSubject
+        self.textVariable = model.textSubject.asObservable()
     }
     
     func send(message: CommMessage) {
