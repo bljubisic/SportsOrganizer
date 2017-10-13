@@ -11,10 +11,10 @@ import RxSwift
 
 
 final class TokenViewModel: TokenViewModelInputs, TokenViewModelOutputs, TokenViewModelProtocol {
-    var phoneNumber: String
+    var phone🔢: String
     
     func createTokenMessage() -> TokenMessage {
-        return TokenMessage(phone: phoneNumber, token: token)
+        return TokenMessage(phone: phone🔢, token: token)
     }
     
     func sendToken(Message message: TokenMessage) -> Bool {
@@ -37,8 +37,8 @@ final class TokenViewModel: TokenViewModelInputs, TokenViewModelOutputs, TokenVi
     
     init(withModel model: SOModelProtocol, andPhone phone: String) {
         self.model = model
-        self.phoneNumber = phone
-        self.messageObservable = model.textSubject
+        self.phone🔢 = phone
+        self.messageObservable = model.textSubject.asObservable()
     }
     
 }
