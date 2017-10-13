@@ -36,6 +36,7 @@
 		0BB9BF001E8E930A00FBA9FA /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */; };
 		0BBB02151F20B78500176DDA /* FirstNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */; };
 		0BBF609E1E96B2B5006D1920 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBF609D1E96B2B5006D1920 /* RxSwift.framework */; };
+		0BCB151E1F7E888B004B2AA9 /* KeychainItemWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCB151D1F7E888A004B2AA9 /* KeychainItemWrapper.swift */; };
 		0BEBA2C51EE7F3C400561313 /* CommunicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBA2C41EE7F3C400561313 /* CommunicationProtocol.swift */; };
 		0BEBA2C71EE81B9B00561313 /* WebSocketCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEBA2C61EE81B9B00561313 /* WebSocketCommunication.swift */; };
 		0BFEFF521F18FF490011F62E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFEFF511F18FE330011F62E /* Message.swift */; };
@@ -95,6 +96,7 @@
 		0BB9BEFF1E8E930A00FBA9FA /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/Starscream/Starscream.framework"; sourceTree = "<group>"; };
 		0BBB02141F20B78500176DDA /* FirstNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstNameTableViewCell.swift; path = View/Registration/FirstNameTableViewCell.swift; sourceTree = "<group>"; };
 		0BBF609D1E96B2B5006D1920 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/SportsOrganizer-bvlxzohtgmosipgaaewdldvwgvuu/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		0BCB151D1F7E888A004B2AA9 /* KeychainItemWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainItemWrapper.swift; path = Model/KeychainItemWrapper.swift; sourceTree = "<group>"; };
 		0BEBA2C41EE7F3C400561313 /* CommunicationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommunicationProtocol.swift; path = Model/CommunicationProtocol.swift; sourceTree = "<group>"; };
 		0BEBA2C61EE81B9B00561313 /* WebSocketCommunication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocketCommunication.swift; path = Model/WebSocketCommunication.swift; sourceTree = "<group>"; };
 		0BFEFF4E1F18FCE20011F62E /* messages.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = messages.pb.swift; path = ../../protobuf/output/swift/proto/messages.pb.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		0B234F511E8C546D0017748B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0BCB151D1F7E888A004B2AA9 /* KeychainItemWrapper.swift */,
 				0B0D48121F783D1300E93245 /* CoreData */,
 				0BFEFF511F18FE330011F62E /* Message.swift */,
 				0BFEFF4E1F18FCE20011F62E /* messages.pb.swift */,
@@ -562,6 +565,7 @@
 				0BADA9E61F2DF44E00BBDF67 /* AlreadyAccountTableViewCell.swift in Sources */,
 				0B24CE571E953AEF009D88F2 /* ViewModelProtocol.swift in Sources */,
 				0BB9BEF81E8DAEC500FBA9FA /* SOModelProtocol.swift in Sources */,
+				0BCB151E1F7E888B004B2AA9 /* KeychainItemWrapper.swift in Sources */,
 				0BFEFF521F18FF490011F62E /* Message.swift in Sources */,
 				0BA47A8A1EFB01C800E7FDCB /* RegViewModelProtocol.swift in Sources */,
 				0B234F241E8C52A00017748B /* ViewController.swift in Sources */,
