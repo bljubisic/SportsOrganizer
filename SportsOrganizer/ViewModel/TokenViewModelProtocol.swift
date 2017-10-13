@@ -11,7 +11,7 @@ import RxSwift
 
 protocol TokenViewModelOutputs {
     var messageObservable: Observable<CommMessage> { get }
-    var phoneNumber: String { get }
+    var phone🔢: String { get }
 }
 
 protocol TokenViewModelInputs {
