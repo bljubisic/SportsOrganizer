@@ -37,7 +37,7 @@ final class SportsOrganizerModel: SOModelProtocol {
                 let appMessage = try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
                 if(self.state == .validateToken) {
                     let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
-                    keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as String as AnyObject
+                    keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject
                 }
                 self.state.changeState(from: self.state, type: appMessage.channelID, message: appMessage)
                 self.textSubject.value = CommMessage(message: message, state: self.state)
@@ -71,10 +71,9 @@ final class SportsOrganizerModel: SOModelProtocol {
         do {
             let contacts = try self.store.unifiedContacts(matching: predicate, keysToFetch: keysToFetch as [CNKeyDescriptor])
             let result: [AddressBook] = contacts.map({ (contact) -> AddressBook in
-                let phoneNumbers = contact.phoneNumbers.map({ (phoneNumber) -> String in
+                return AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: contact.phoneNumbers.map({ (phoneNumber) -> String in
                     return phoneNumber.value.stringValue
-                })
-                return AddressBook(name: contact.givenName + " " + contact.familyName, phoneNum: phoneNumbers)
+                }))
             })
             _ = completion(result)
         } catch _ {
