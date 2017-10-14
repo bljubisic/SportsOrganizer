@@ -26,6 +26,8 @@ final class SportsOrganizerModel: SOModelProtocol {
         self.state = .idle
         self.textSubject = Variable<CommMessage>(CommMessage())
         
+        communicationPortal.set(Model: self)
+        
         self.communicationPortal.messagesData.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -51,18 +53,7 @@ final class SportsOrganizerModel: SOModelProtocol {
         }) {
             print("Something")
         }.addDisposableTo(disposeBag)
-        /*
-        textSubject = self.modelState.asObservable().withLatestFrom(messagesDataFiltered, resultSelector: { (state, message) -> CommMessage in
-            print("Message received: \(message) and state is \(state)")
-            if(state == .confirmed) {
-                let appMessage =  try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
-                let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
-                keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject?
-            }
-            return CommMessage(message: message, state: state)
-        })
-        */
-        communicationPortal.set(Model: self)
+
     }
     
     func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
