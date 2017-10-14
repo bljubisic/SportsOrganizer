@@ -98,21 +98,20 @@ final class WebSocketCommunication: CommunicationProtocol  {
 }
 
 extension WebSocketCommunication: WebSocketDelegate {
-    
-    public func websocketDidConnect(socket: WebSocket) {
+    func websocketDidConnect(socket: WebSocketClient) {
         print("Connected")
     }
     
-    public func websocketDidDisconnect(socket: WebSocket, error: NSError?) {
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         print("Disconnected: error: \(error.debugDescription)")
     }
     
-    public func websocketDidReceiveMessage(socket: WebSocket, text: String) {
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("Received text: \(text)")
         //textSubject.value = text
     }
     
-    public func websocketDidReceiveData(socket: WebSocket, data: Data) {
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         print("Received data: \(data)")
         do {
             let appMessage = try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: data)
