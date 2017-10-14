@@ -4,17 +4,17 @@ use_frameworks!
 
 target 'SportsOrganizer' do
     pod 'Starscream'
-    pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'swift-4'
-    pod 'RxSwift',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'swift4.0'
-    pod 'RxCocoa',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'swift4.0'
+    pod 'SnapKit', '~> 4.0.0'
+    pod 'RxSwift',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
+    pod 'RxCocoa',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
     pod 'SwiftProtobuf'
 end
 
 target 'SportsOrganizerTests' do
     pod 'Starscream'
-    pod 'SnapKit', :git => 'https://github.com/SnapKit/SnapKit.git', :branch => 'swift-4'
-    pod 'RxSwift',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'swift4.0'
-    pod 'RxCocoa',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'swift4.0'
+    pod 'SnapKit', '~> 4.0.0'
+    pod 'RxSwift',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
+    pod 'RxCocoa',  :git => 'https://github.com/ReactiveX/RxSwift.git', :branch => 'rxswift4.0-swift4.0'
     pod 'SwiftProtobuf'
 end
 
