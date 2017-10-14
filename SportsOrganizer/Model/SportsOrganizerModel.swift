@@ -25,14 +25,14 @@ final class SportsOrganizerModel: SOModelProtocol {
         self.communicationPortal.connect()
         self.state = .idle
         self.textSubject = Variable<CommMessage>(CommMessage())
-        let messagesDataFiltered = self.communicationPortal.messagesData.asObservable()
+        
+        self.communicationPortal.messagesData.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .filter { (message) -> Bool in
                 print("Message!!!")
                 return (message != Data())
-            }
-        messagesDataFiltered.subscribe(onNext: { (message) in
+            }.subscribe(onNext: { (message) in
             do {
                 let appMessage = try Com_Sportorganizer_Proto_Msgs_AppMessage(serializedData: message)
                 if(self.state == .validateToken) {
