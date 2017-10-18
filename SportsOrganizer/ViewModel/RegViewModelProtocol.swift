@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol RegViewModelOutputs {
-    var textSubject: Observable<CommMessage> { get }
+    var appState: Observable<CommMessage> { get }
 }
 
 protocol RegViewModelInputs {
