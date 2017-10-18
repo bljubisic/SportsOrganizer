@@ -38,7 +38,7 @@ final class TokenViewModel: TokenViewModelInputs, TokenViewModelOutputs, TokenVi
     init(withModel model: SOModelProtocol, andPhone phone: String) {
         self.model = model
         self.phone🔢 = phone
-        self.messageObservable = model.textSubject.asObservable()
+        self.messageObservable = model.appStateAndMessage.asObservable()
     }
     
 }
