@@ -20,7 +20,7 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         self.startButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 50.0, height: 20.0))
         self.startButton.setTitle("Start", for: UIControlState.normal)
@@ -32,8 +32,8 @@ class InitialViewController: UIViewController {
         }
         self.startButton.isEnabled = false
         self.startButton.addTarget(self, action: #selector(startEvent), for: .touchUpInside)
-        
-        self.viewModel.outputs.textVariable.subscribe(onNext: { result in
+    
+        self.viewModel.outputs.appState.subscribe(onNext: { result in
             if(result.state == .started) {
                 let registrationViewController = RegistrationViewController()
                 
@@ -47,7 +47,7 @@ class InitialViewController: UIViewController {
             print("completed")
         }) {
             print("Something")
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
