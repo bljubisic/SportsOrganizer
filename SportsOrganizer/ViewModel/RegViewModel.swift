@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModelOutputs {
-    var textSubject: Observable<CommMessage>
+    var appState: Observable<CommMessage>
     
     
     var outputs: RegViewModelOutputs {
@@ -39,6 +39,6 @@ final class RegViewModel: RegViewModelProtocol, RegViewModelInputs, RegViewModel
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.textSubject = model.textSubject.asObservable()
+        self.appState = model.appStateAndMessage.asObservable()
     }
 }
