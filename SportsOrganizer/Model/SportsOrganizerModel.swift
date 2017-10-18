@@ -15,7 +15,7 @@ final class SportsOrganizerModel: SOModelProtocol {
     
     var store = CNContactStore()
     var communicationPortal: CommunicationProtocol
-    var textSubject: Variable<CommMessage>
+    var appStateAndMessage: Variable<CommMessage>
     var state: State
     private let disposeBag = DisposeBag()
     
@@ -24,10 +24,13 @@ final class SportsOrganizerModel: SOModelProtocol {
         communicationPortal = WebSocketCommunication(withURL: URL(string: "wss://localhost:8444/ws/app")!, shouldReconnect: true)
         self.communicationPortal.connect()
         self.state = .idle
-        self.textSubject = Variable<CommMessage>(CommMessage())
+        self.appStateAndMessage = Variable<CommMessage>(CommMessage())
         
         communicationPortal.set(Model: self)
-        
+        if(checkKeychainEntry()) {
+            self.state = .tryLogin
+            self.appStateAndMessage.value = CommMessage(message: Data(), state: self.state)
+        }
         self.communicationPortal.messagesData.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -40,9 +43,10 @@ final class SportsOrganizerModel: SOModelProtocol {
                 if(self.state == .validateToken) {
                     let keychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
                     keychainItemWrapper[appMessage.registrationResponse.phoneNumber] = appMessage.registrationResponse.password as AnyObject
+                    print(keychainItemWrapper.values.count)
                 }
                 self.state.changeState(from: self.state, type: appMessage.channelID, message: appMessage)
-                self.textSubject.value = CommMessage(message: message, state: self.state)
+                self.appStateAndMessage.value = CommMessage(message: message, state: self.state)
             } catch(let error) {
                 print(error)
             }
@@ -52,8 +56,16 @@ final class SportsOrganizerModel: SOModelProtocol {
             print("Completed")
         }) {
             print("Something")
-        }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
 
+    }
+    
+    func checkKeychainEntry() -> Bool {
+        let keychainItemWrapper: KeychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
+        if(keychainItemWrapper.values.count > 0) {
+            return true
+        }
+        return false
     }
     
     func collectAddressBookInfoWith(completion: ([AddressBook]) -> Bool) {
