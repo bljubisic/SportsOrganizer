@@ -46,7 +46,7 @@ class EnterTokenViewController: UIViewController {
                 if let tokenUnwrapped = token {
                     self.viewModel.token = tokenUnwrapped
                 }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         // Do any additional setup after loading the view.
     }
 
