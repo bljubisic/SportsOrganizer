@@ -51,7 +51,7 @@ class RegistrationViewController: UIViewController {
             },
             onCompleted: {
                 print("Done")
-        }).addDisposableTo(self.disposeBag)
+        }).disposed(by: self.disposeBag)
         self.lastNameCell.lastNameTextField.rx.text.subscribe(
             onNext: {lastname in
                 guard let lastnameUnwrapped = lastname else {
@@ -61,7 +61,7 @@ class RegistrationViewController: UIViewController {
             },
             onCompleted: {
                 print("Done")
-        }).addDisposableTo(self.disposeBag)
+        }).disposed(by: self.disposeBag)
         self.usernameCell.usernameTextField.rx.text.subscribe(
             onNext: {username in
                 guard let usernameUnwrapped = username else {
@@ -72,7 +72,7 @@ class RegistrationViewController: UIViewController {
             onCompleted: {
                 print("Done")
             }
-        ).addDisposableTo(self.disposeBag)
+            ).disposed(by: self.disposeBag)
         self.phoneNumberCell.phoneNumberTextField.rx.text.subscribe(
             onNext: {phoneNumber in
                 guard let phoneNumberUnwrapped = phoneNumber else {
@@ -83,8 +83,8 @@ class RegistrationViewController: UIViewController {
             onCompleted: {
                 print("Done")
             }
-        ).addDisposableTo(self.disposeBag)
-        self.viewModel.outputs.textSubject.subscribe(onNext: { result in
+            ).disposed(by: self.disposeBag)
+        self.viewModel.outputs.appState.subscribe(onNext: { result in
             if(result.state == .validateToken) {
                 let enterTokenViewController = EnterTokenViewController()
                 
@@ -98,7 +98,7 @@ class RegistrationViewController: UIViewController {
             print("completed")
         }) {
             print("Something")
-            }.addDisposableTo(disposeBag)
+            }.disposed(by: disposeBag)
         // Do any additional setup after loading the view.
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(0, 0, 0, 0))
