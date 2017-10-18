@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol SOModelProtocol {
-    var textSubject: Variable<CommMessage> { get }
+    var appStateAndMessage: Variable<CommMessage> { get }
     var state: State { get }
     
     func send(message: CommMessage) -> Void
