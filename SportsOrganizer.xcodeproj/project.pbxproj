@@ -354,7 +354,7 @@
 				TargetAttributes = {
 					0B234F1D1E8C529F0017748B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W3FZKU8HEQ;
+						DevelopmentTeam = ENT89NLKC9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -737,7 +737,7 @@
 			baseConfigurationReference = F955994C0CDC8ED10A31B81A /* Pods-SportsOrganizer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W3FZKU8HEQ;
+				DEVELOPMENT_TEAM = ENT89NLKC9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
@@ -758,7 +758,7 @@
 			baseConfigurationReference = 1C970CB33BD2AF29EA86937C /* Pods-SportsOrganizer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W3FZKU8HEQ;
+				DEVELOPMENT_TEAM = ENT89NLKC9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/RxCocoa",
