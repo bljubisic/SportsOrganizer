@@ -12,7 +12,7 @@ import RxSwift
 final class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModelOutputs {
     
     var model: SOModelProtocol
-    var textVariable: Observable<CommMessage>
+    var appState: Observable<CommMessage>
 
     var outputs: InitViewModelOutputs {
         return self
@@ -24,7 +24,7 @@ final class ViewModel: InitViewModelProtocol, InitViewModelInputs, InitViewModel
     
     init(withModel model: SOModelProtocol) {
         self.model = model
-        self.textVariable = model.textSubject.asObservable()
+        self.appState = model.appStateAndMessage.asObservable()
     }
     
     func send(message: CommMessage) {
