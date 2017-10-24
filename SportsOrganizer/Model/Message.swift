@@ -60,6 +60,18 @@ extension RegMessage {
     }
 }
 
+struct LoginMessage {
+    let phone🔢: String
+    let password: String
+}
+
+extension LoginMessage {
+    init() {
+        phone🔢 = ""
+        password = ""
+    }
+}
+
 struct AddressBook {
     let name: String
     let phoneNum: [String]
@@ -79,7 +91,6 @@ enum State {
     case confirmed
     case completed
     case tryLogin
-    case tryTouchId
     
     mutating func changeState(from: State, type: Com_Sportorganizer_Proto_Msgs_AppMessage.MessageChannel, message: Com_Sportorganizer_Proto_Msgs_AppMessage) {
         // TODO: For now let this be like this, but should be changed with rules when and how state could be changed
@@ -99,10 +110,6 @@ enum State {
         case .completed:
             self = .idle
         case .tryLogin:
-            if(type == .hanshake) {
-                self = .tryTouchId
-            }
-        case .tryTouchId:
             if(type == .hanshake) {
                 self = .completed
             }
