@@ -69,6 +69,31 @@ final class WebSocketCommunication: CommunicationProtocol  {
         return true
     }
     
+    func sendLogin(Message message: LoginMessage) -> Bool {
+        if(!socket.isConnected && self.shouldReconnectFlag) {
+            self.socket.connect()
+        }
+        
+        var appMessage = Com_Sportorganizer_Proto_Msgs_AppMessage()
+        appMessage.channelID = .hanshake
+        appMessage.signIn.phoneNumber = message.phone🔢
+        appMessage.signIn.password = message.password
+        var deviceInfo = Com_Sportorganizer_Proto_Msgs_DeviceInfo()
+        deviceInfo.deviceName = "iPhone 7"
+        deviceInfo.os = "iOS 10"
+        deviceInfo.platform = "iOS"
+        deviceInfo.processor = "A10"
+        appMessage.signIn.deviceInfo = deviceInfo
+        do {
+            print("Login: \(appMessage.signIn)")
+            try socket.write(data: appMessage.serializedData())
+        } catch let error {
+            print("error: \(error)")
+            return false
+        }
+        return true
+    }
+    
     func sendToken(Message message: TokenMessage) -> Bool {
         if(!socket.isConnected && self.shouldReconnectFlag) {
             self.socket.connect()
