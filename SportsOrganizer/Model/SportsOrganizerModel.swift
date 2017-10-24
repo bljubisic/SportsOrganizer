@@ -27,10 +27,7 @@ final class SportsOrganizerModel: SOModelProtocol {
         self.appStateAndMessage = Variable<CommMessage>(CommMessage())
         
         communicationPortal.set(Model: self)
-        if(checkKeychainEntry()) {
-            self.state = .tryLogin
-            self.appStateAndMessage.value = CommMessage(message: Data(), state: self.state)
-        }
+
         self.communicationPortal.messagesData.asObservable()
             .throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
@@ -46,6 +43,17 @@ final class SportsOrganizerModel: SOModelProtocol {
                     print(keychainItemWrapper.values.count)
                 }
                 self.state.changeState(from: self.state, type: appMessage.channelID, message: appMessage)
+                if(self.state == .started) {
+                    if(self.checkKeychainEntry()) {
+                        self.state = .tryLogin
+                        let keychainItemWrapper: KeychainItemWrapper = KeychainItemWrapper(identifier: "sportsOrganizer", accessGroup: "sportsOrganizer")
+                        guard let firstEntry = keychainItemWrapper.values.popFirst() else {
+                            return
+                        }
+                        let loginMessage = LoginMessage(phone🔢: firstEntry.key, password: firstEntry.value as! String)
+                        self.sendLogin(message: loginMessage)
+                    }
+                }
                 self.appStateAndMessage.value = CommMessage(message: message, state: self.state)
             } catch(let error) {
                 print(error)
@@ -90,6 +98,10 @@ final class SportsOrganizerModel: SOModelProtocol {
     
     func sendRegistration(message: RegMessage) {
         _ = self.communicationPortal.sendRegistration(Message: message)
+    }
+    
+    func sendLogin(message: LoginMessage) {
+        _ = self.communicationPortal.sendLogin(Message: message)
     }
     
     func sendToken(message: TokenMessage) {
