@@ -16,6 +16,7 @@ protocol SOModelProtocol {
     
     func send(message: CommMessage) -> Void
     func sendRegistration(message: RegMessage) -> Void
+    func sendLogin(message: LoginMessage) -> Void
     func sendToken(message: TokenMessage) -> Void
     func create(message: Message) -> Bool
     func changeState(from state:State, to: State) -> Void
