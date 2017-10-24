@@ -40,6 +40,9 @@ class InitialViewController: UIViewController {
                 registrationViewController.viewModel = RegViewModel(withModel: self.viewModel.model)
                 self.navigationController?.pushViewController(registrationViewController, animated: true)
             }
+            else if(result.state == .completed) {
+                print("Completed")
+            }
             print("Result: \(result)")
         }, onError: { (Error) in
             print("error")
