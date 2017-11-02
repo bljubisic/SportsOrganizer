@@ -110,9 +110,7 @@ enum State {
         case .completed:
             self = .idle
         case .tryLogin:
-            if(type == .hanshake) {
-                self = .completed
-            }
+            self = .completed
         }
     }
 }
