@@ -55,10 +55,10 @@ final class WebSocketCommunication: CommunicationProtocol  {
         appMessage.registrationRequest.phoneNumber = message.phone
         appMessage.registrationRequest.alreadyRegistred = false
         var deviceInfo = Com_Sportorganizer_Proto_Msgs_DeviceInfo()
-        deviceInfo.deviceName = "iPhone 7"
-        deviceInfo.os = "iOS 10"
-        deviceInfo.platform = "iOS"
-        deviceInfo.processor = "A10"
+        deviceInfo.deviceName = UIDevice.current.model
+        deviceInfo.os = UIDevice.current.systemVersion
+        deviceInfo.platform = UIDevice.current.systemName
+        deviceInfo.processor = ""
         appMessage.registrationRequest.deviceInfo = deviceInfo
         do {
             print("Registration: \(appMessage.registrationRequest)")
@@ -79,10 +79,10 @@ final class WebSocketCommunication: CommunicationProtocol  {
         appMessage.signIn.phoneNumber = message.phone🔢
         appMessage.signIn.password = message.password
         var deviceInfo = Com_Sportorganizer_Proto_Msgs_DeviceInfo()
-        deviceInfo.deviceName = "iPhone 7"
-        deviceInfo.os = "iOS 10"
-        deviceInfo.platform = "iOS"
-        deviceInfo.processor = "A10"
+        deviceInfo.deviceName = UIDevice.current.model
+        deviceInfo.os = UIDevice.current.systemVersion
+        deviceInfo.platform = UIDevice.current.systemName
+        deviceInfo.processor = ""
         appMessage.signIn.deviceInfo = deviceInfo
         do {
             print("Login: \(appMessage.signIn)")
